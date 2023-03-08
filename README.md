@@ -24,7 +24,7 @@
 ##### Step 2: Adding my resume to the repository
    >In the reposiroty, I can add my files to the repository by click on the add file button and select the upload file, which allow me to upload files from my device to the repository.
 ##### Step 3: 
-
+![](./Material/Gif/createRepo_p1.gif)
 
 
 ## Resources
@@ -34,6 +34,7 @@
 - [Jekll](https://jekyllrb.com/)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Markdown in Visual Studio Code](https://code.visualstudio.com/docs/languages/markdown)
+- [Markdown to GitHub Pages](https://nicolas-van.github.io/easy-markdown-to-github-pages/)
 
 ## Authors
 
