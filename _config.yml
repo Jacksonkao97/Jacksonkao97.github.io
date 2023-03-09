@@ -6,34 +6,35 @@ favicon: images/favicon.ico
 version: 2
 
 # Personal info
-name: Jackson Kao Yee Tsung
+name: Yee Tsung Kao Jackson
 title: Software Engineer
 email: Jacksonkao97@gmail.com
-website: https://github.com/Jacksonkao97
+phone: +1(204)292-2339
+#website: https://github.com/Jacksonkao97
 
 # Dark Mode (true/false/never)
 darkmode: false
 
 # Social links
 #twitter_username: nope
-github_username:  Jacksonkao
+github_username:  https://github.com/Jacksonkao97
 # stackoverflow_username: "00000001"
 # dribbble_username: nope
-facebook_username: Jacksonkao
+facebook_username: https://www.facebook.com/jacksonkao/
 # flickr_username: nope
 #instagram_username: nope
-linkedin_username: Jacksonkao
+linkedin_username: https://www.linkedin.com/in/jackson-kao-654bab1b4/
 # xing_username: nope
 # pinterest_username: nope
-youtube_username: Jacksonkao
+#youtube_username: Jacksonkao
 # googleplus_username: +nope
 # orcid_username: 0000-0000-0000-0000
 
 # Additional icon links
-additional_links:
-- title: itsgoingto.be
-  icon: fas fa-globe
-  url: https://www.itsgoingto.be
+#additional_links:
+#- title: itsgoingto.be
+#  icon: fas fa-globe
+#  url: https://www.itsgoingto.be
 # - title: another link
 #   icon: font awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&m=free)
 #   url: Link url (eg. https://google.com)
