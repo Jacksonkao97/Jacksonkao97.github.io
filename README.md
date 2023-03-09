@@ -21,15 +21,15 @@
 ##### Step 1: Create a repository on GitHub
    >Visit to GitHub website and login to my account(create an account if do not have one). Click on the plus sign button on the top right corner which beisde to my profile picture, and select the new repository from the dropdown menu.
    ![](./Material/Gif/createRepo_p1.gif)
-   >Create the repository with this format 
+   Create the repository with this format 
    ![](./Material/Pic/namingRepo.png)
    >Finally, set the repository to public and hit the "Create Repository" button.
 ##### Step 2: Adding my resume to the repository
    >Go to my repository by searching the repository name on the top-left corner.
    ![](./Material/Pic/findRepo.png)
-   >Now, adding my resume to the repository by clicking the "Add file" button and select the upload file(might need to create a new file if do not have a resume yet)
+   Now, adding my resume to the repository by clicking the "Add file" button and select the upload file(might need to create a new file if do not have a resume yet)
    ![](./Material/Gif/uploadFileRepo.gif)
-   >Once the resume is up, time to host it on Github.
+   Once the resume is up, time to host it on Github.
 ##### Step 3: 
 
 
