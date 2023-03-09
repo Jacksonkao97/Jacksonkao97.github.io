@@ -85,7 +85,7 @@ content:
   - title: A Little More About Me
     layout: text
     content: | # this will include new lines to allow paragraphs
-          Due to Covid-19 happens during my education time, most of the time I spent at is my apartment. At first, I though that this is good to me cause I have more time to studying and playing video games with my friends.....but thanks to the different time zone between Canada and Malaysia, I'm been forced to become a single-player.
+        Due to Covid-19 happens during my education time, most of the time I spent at is my apartment. At first, I though that this is good to me cause I have more time to studying and playing video games with my friends.....but thanks to the different time zone between Canada and Malaysia, I'm been forced to become a single-player.
       - Watch Drama
       - Gaming
 
