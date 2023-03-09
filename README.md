@@ -3,8 +3,8 @@
 ##### Build a well formetted resume and hosting it online. Stop wasting time and money on printing out the resume! To make our life more easy, develop resume with Andrew Etter's book Modern Technical Writing's principle and hosting it on GitHub.
 
 ## Table of Contents:
-- [Few tools we need....._it's free_](#description-of-softwarescomponents)
-- [Hosting a website on GitHub](#hosting-a-website-on-github)
+- [Few tools we need....._it's free_](#tools-needed-for-hosting-on-github)
+- [Hosting a website](#hosting-a-resume-on-github)
 - []()
 
 ### Tools needed for hosting on GitHub:
@@ -19,12 +19,19 @@
 
 ### Hosting a resume on GitHub
 ##### Step 1: Create a repository on GitHub
-   >Visit to GitHub website and login to my account(create an account if do not have one). After that, click on the plus sign button on the top right corner which beisde to my profile picture. In the dropdown box, select the New repository selection. Now, naming the repository with the style "accountname.github.io" and click the button at the bottom to create the repository.
-   <!--Will add image and GIF here-->
+   >Visit to GitHub website and login to my account(create an account if do not have one). Click on the plus sign button on the top right corner which beisde to my profile picture, and select the new repository from the dropdown menu.
+   ![](./Material/Gif/createRepo_p1.gif)
+   >Create the repository with this format 
+   ![](./Material/Pic/namingRepo.png)
+   >Finally, set the repository to public and hit the "Create Repository" button.
 ##### Step 2: Adding my resume to the repository
-   >In the reposiroty, I can add my files to the repository by click on the add file button and select the upload file, which allow me to upload files from my device to the repository.
+   >Go to my repository by searching the repository name on the top-left corner.
+   ![](./Material/Pic/findRepo.png)
+   >Now, adding my resume to the repository by clicking the "Add file" button and select the upload file(might need to create a new file if do not have a resume yet)
+   ![](./Material/Gif/uploadFileRepo.gif)
+   >Once the resume is up, time to host it on Github.
 ##### Step 3: 
-![](./Material/Gif/createRepo_p1.gif)
+
 
 
 ## Resources
