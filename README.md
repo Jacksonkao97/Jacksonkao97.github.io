@@ -1,20 +1,20 @@
-# Title: Hosting a Well-Formatted Resume on GitHub using GitHub pages.
+# Hosting a Well-Formatted Resume on GitHub using GitHub pages.
 
-##### This README will discuss how I host my resume on GitHub and what are the software and template I used for hosting and formating my resume. In addition, will also include how _Andrew Etter's book Modern Technical Writing_ assist me on hosting my resume.
+##### Build a well formetted resume and hosting it online. Stop wasting time and money on printing out the resume! To make our life more easy, develop resume with Andrew Etter's book Modern Technical Writing's principle and hosting it on GitHub.
 
 ## Table of Contents:
-- [Description of Softwares/Components](#description-of-softwarescomponents)
+- [Few tools we need....._it's free_](#description-of-softwarescomponents)
 - [Hosting a website on GitHub](#hosting-a-website-on-github)
 - []()
 
-### Description of Softwares/Components:
-##### 1. GitHub:
+### Tools needed for hosting on GitHub:
+##### 1. [GitHub](https://github.com/):
    > A platform that provide hosting and version control features. For me, GitHub is just a free server that I can store my files and folders on it, it is similar to google cloud but with more features. One of the features that I liked and will want to share to you later is the hosting website using GitHub.
-##### 2. Visual Studio Code:
+##### 2. [Visual Studio Code](https://code.visualstudio.com/):
    > A software/editor that allow people to coding/programming their project. I often uses vscode to programming my project, since vscode has a very range of language extension that allow me to programming different language on one editor such as .markdown, .javascript, .html, and etc. Also, people can access their files and folders on Github using vscode, which makes people life more easy.
-##### 3. GitHub pages:
+##### 3. [GitHub pages](https://pages.github.com/):
    > A website that provide very detail information about how to use host a website using GitHub.
-##### 4. Jekll:
+##### 4. [Jekll](https://jekyllrb.com/):
    > A website that provided a lot of template that free for everyone to use to aply to their resume or website. They also help people to host a static/local website, so that people like me who hate waiting can look at the effect on the static website immediately after I changed something to my website.
 
 ### Hosting a resume on GitHub
