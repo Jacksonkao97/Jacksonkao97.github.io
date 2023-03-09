@@ -30,9 +30,13 @@
    >Finally, set the repository to public and hit the "Create Repository" button.
 ##### Step 2: Adding my resume to the repository
    >Go to my repository by searching the repository name on the top-left corner.
-   >![](./Material/Pic/findRepo.png)
+
+   ![](./Material/Pic/findRepo.png)
+
    >Now, adding my resume to the repository by clicking the "Add file" button and select the upload file(might need to create a new file if do not have a resume yet)
-   >![](./Material/Gif/uploadFileRepo.gif)
+   
+   ![](./Material/Gif/uploadFileRepo.gif)
+   
    >Once the resume is up, time to host it on Github.
 ##### Step 3: 
 
