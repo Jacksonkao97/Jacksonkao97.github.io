@@ -1,11 +1,14 @@
-# Hosting a Well-Formatted Resume on GitHub using GitHub pages.
+# Develop My Resume using markdown and host it on GitHub
 
-##### Build a well formetted resume and hosting it online. Stop wasting time and money on printing out the resume! To make our life more easy, develop resume with Andrew Etter's book Modern Technical Writing's principle and hosting it on GitHub.
+##### Build a well formetted resume using markdown and hosting it online. Stop wasting time and money on printing out the resume! To make our life more easy, develop resume with Andrew Etter's book Modern Technical Writing's principle and hosting it on GitHub.
 
 ## Table of Contents:
 - [Few tools we need....._it's free_](#tools-needed-for-hosting-on-github)
+- [Formatting Resume with Markdown](#formatting-resume-with-markdown)
 - [Hosting a website](#hosting-a-resume-on-github)
-- []()
+- [Resources](#resources)
+- [Authors and Acknowledge](#authors)
+- [FAQs](#faqs)
 
 ### Tools needed for hosting on GitHub:
 ##### 1. [GitHub](https://github.com/):
@@ -16,6 +19,9 @@
    > A website that provide very detail information about how to use host a website using GitHub.
 ##### 4. [Jekll](https://jekyllrb.com/):
    > A website that provided a lot of template that free for everyone to use to aply to their resume or website. They also help people to host a static/local website, so that people like me who hate waiting can look at the effect on the static website immediately after I changed something to my website.
+
+### Formatting Resume with Markdown
+#### Step 1: 
 
 ### Hosting a resume on GitHub
 ##### Step 1: Create a repository on GitHub
@@ -43,7 +49,7 @@
 
 
 ## Resources
-
+- [Modern Technical Writing: An Introduction to Software Documentation](https://www.amazon.ca/Modern-Technical-Writing-Introduction-Documentation-ebook/dp/B01A2QL9SS)
 - [Markdown Tutorial](https://www.markdowntutorial.com/)
 - [GitHub pages](https://pages.github.com/)
 - [Jekll](https://jekyllrb.com/)
@@ -52,24 +58,23 @@
 - [Markdown to GitHub Pages](https://nicolas-van.github.io/easy-markdown-to-github-pages/)
 
 ## Authors
-
 - [@Jacksonkao97](https://github.com/Jacksonkao97)
+- [@James Grant](https://github.com/sproogen)
+- [@Billie Thompson](https://github.com/PurpleBooth)
 
 ## Acknowledgements
-
 - [Awesome README](https://github.com/matiassingers/awesome-readme)
 - [Good README Template](https://github.com/PurpleBooth/a-good-readme-template)
+- [Resume template](https://github.com/sproogen/modern-resume-theme)
 
 ## FAQs
-
-**1. Why is Markdown better than a word processor?**
+#### 1. Why is Markdown better than a word processor?
    - Formatting by code.
    - No complicate features.
    - Easy to use.
    - Easy to convert to other file type.
    - Do not have fancy stuff.
-
-**2. Why is my resume not showing up?**
+#### 2. Why is my resume not showing up?
    - Make sure the Github server is not down.
    - Make sure put the resume in the right path.
    - Check the setting in the repository that uses to hosting the resume, make sure the hosting branch is the correct branch.
