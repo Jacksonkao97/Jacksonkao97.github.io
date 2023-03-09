@@ -20,9 +20,9 @@
 ### Hosting a resume on GitHub
 ##### Step 1: Create a repository on GitHub
    >Visit to GitHub website and login to my account(create an account if do not have one). Click on the plus sign button on the top right corner which beisde to my profile picture, and select the new repository from the dropdown menu.
-   ![](./Material/Gif/createRepo_p1.gif)
-   Create the repository with this format 
-   ![](./Material/Pic/namingRepo.png)
+   >![](./Material/Gif/createRepo_p1.gif)
+   >Create the repository with this format 
+   >![](./Material/Pic/namingRepo.png)
    >Finally, set the repository to public and hit the "Create Repository" button.
 ##### Step 2: Adding my resume to the repository
    >Go to my repository by searching the repository name on the top-left corner.
