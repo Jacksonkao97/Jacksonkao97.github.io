@@ -1,7 +1,12 @@
-> Audience: CS Student
-> Venue: README on GitHub Pages
-> Purpose: Explain how to host a resume on GitHub Pages.
-> Additional purpose: Introduce and demonstrate the principles of Andrew Etter's book Modern Technical Writing
-> Desired Reaction: Confuse and Giving up on learning
-> Vocabulary: Casual and Unprofessional
-> Tone: Inconfident
+Audience: CS Student
+Venue: README on GitHub Pages
+Purpose: Explain how to host a resume on GitHub Pages.
+Additional purpose: Introduce and demonstrate the principles of Andrew Etter's book Modern Technical Writing
+Desired Reaction: Kinda understand and want to give it a try.
+Vocabulary: Casual and Unprofessional
+Tone: Confident
+
+Hosted README: https://github.com/Jacksonkao97/Jacksonkao97.github.io/blob/main/README.md
+Hosted Resume: https://jacksonkao97.github.io/
+
+Software used: GitHub Pages, VS code, VS code markdown extension, GitHub supported template.
