@@ -17,7 +17,7 @@
    > A software/editor that allow people to coding/programming their project. I often uses vscode to programming my project, since vscode has a very range of language extension that allow me to programming different language on one editor such as .markdown, .javascript, .html, and etc. Also, people can access their files and folders on Github using vscode, which makes people life more easy.
 ##### 3. [GitHub pages](https://pages.github.com/):
    > A website that provide very detail information about how to use host a website using GitHub.
-##### 4. [Jekll](https://jekyllrb.com/):
+##### 4. [Jekyll](https://jekyllrb.com/):
    > A website that provided a lot of template that free for everyone to use to aply to their resume or website. They also help people to host a static/local website, so that people like me who hate waiting can look at the effect on the static website immediately after I changed something to my website.
 
 ### Formatting Resume with Markdown
