@@ -57,7 +57,7 @@ content:
   - title: Experience # Title for the section
     layout: list # Type of content section (list/text)
     content:
-      - layout: left
+      - layout: center
         title: Eu Yan Sang
         link: https://www.euyansang.com/
         sub_title: Salesperson
@@ -67,22 +67,20 @@ content:
   - title: Education # Title for the section
     layout: list # Type of content section (list/text)
     content:
-      - layout: left
+      - layout: center
         title: University of Manitoba
         caption: 2019 - present
         sub_title: BSc Computer Science
         description: | # this will include new lines to allow paragraphs
-          Implementing....
 
   - title: Education # Title for the section
     layout: list # Type of content section (list/text)
     content:
-      - layout: left
+      - layout: center
         title: PSB acedemy
         caption: 2017 - 2018
         sub_title: Diploma in Infocomm Technology
         description: | # this will include new lines to allow paragraphs
-          Implementing....
 
   - title: A Little More About Me
     layout: text
