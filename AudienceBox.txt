@@ -7,6 +7,6 @@ Vocabulary: Casual and Unprofessional
 Tone: Confident
 
 Hosted README: https://github.com/Jacksonkao97/Jacksonkao97.github.io/blob/main/README.md
-Hosted Resume: https://jacksonkao97.github.io/
+Hosted Resume: https://jacksonkao97.github.io/Resume.html
 
-Software used: GitHub Pages, VS code, VS code markdown extension, GitHub supported template.
+Software used: GitHub Pages, VS code, VS code markdown extension, Jekyll.
