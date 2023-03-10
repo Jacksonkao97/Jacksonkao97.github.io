@@ -1,7 +1,11 @@
+---
+layout: default
+title: My Resume
+---
 # YeeTsung Kao
-**Address:** Unit 20 - 389 Balmoral St, Winnipeg, MB R3B 2P7
-**Contact:** +1 (204) 292-2339
-**Email:** Jacksonkao97@hotmail.com / Jacksonkao97@gmail.com
+#### Address: Unit 20 - 389 Balmoral St, Winnipeg, MB R3B 2P7
+#### Contact: +1 (204) 292-2339
+#### Email: Jacksonkao97@gmail.com
 - - -
 
 ### Resume Objective:
