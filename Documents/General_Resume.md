@@ -1,17 +1,13 @@
-# YeeTsung Kao
-**Address**: 389 Balmoral St, Winnipeg, Manitoba, R3B 2P7
+# Yee Tsung (Jackson) Kao
 
-**Contact**: +1 (204) 292-2339
-
-**Email**: Jacksonkao97@gmail.com (Preferred)
+**Contact**: +1(204)292-2339<br>
+**Email**: <Jacksonkao97@hotmail.com> or <Jacksonkao97@gmail.com> (Preferred)
 
 ---
-
 ### Resume Objective:
 Highly organized and hard-working undergraduate student with well-developed personal skills and quick adaptability. Seeking a Full/Part-time position where I can apply my knowledge and passion to the organization. Wishing to bring up a fresh
 
 ---
-
 ### Work Experience:
 * **Salesperson (Jan 2016 - March 2016)**
     * Eu Yan Sang, Sabah, Malaysia
