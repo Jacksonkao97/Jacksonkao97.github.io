@@ -1,4 +1,4 @@
-# Yee Tsung (Jackson) Kao
+# Jackson Kao
 
 **Contact**: +1(204)292-2339<br>
 **Email**: <Jacksonkao97@hotmail.com> or <Jacksonkao97@gmail.com> (Preferred)
