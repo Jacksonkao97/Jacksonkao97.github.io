@@ -1,45 +1,43 @@
-# Jackson Kao  
+# YeeTsung Kao (Jackson)
+<span>Winnipeg, Manitoba, Canada</span>  
 <span><Jacksonkao97@gmail.com></span>  
-<span>Winnipeg, MB, Canada</span>  
+<span>[LinkedIn Profile](https://www.linkedin.com/in/jackson-kao-654bab1b4/)</span>
 
-## Summary:
-Highly motivated Computer Science graduate with a passion for software development and a strong academic foundation. Skilled in both frontend and backend technologies, with hands-on experience in developing REACT Apps and RESTful APIs. My academic journal features a range of successful software development projects, demonstrating my ability to quickly grasp new concepts and apply them to real-world scenarios.  
+<!-- ## Summary:
+Highly motivated Computer Science graduate with a passion for software development and a strong academic foundation. Skilled in both frontend and backend technologies, with hands-on experience in developing REACT Apps and RESTful APIs. My academic journal features a range of successful software development projects, demonstrating my ability to quickly grasp new concepts and apply them to real-world scenarios.   -->
 
-## Internship Experience:
+## Work Experience:
 #### Backend Developer <span>Jan 2024 - April 2024</span>
 ##### CareMate Health, Winnipeg, MB, Canada
-* Setup and structured a RESTful API server using Node.js and Express.js, and integrated the server with a Postgres database
-* Managed the server deployment on AWS Elastic Beanstalk, and monitored server performance using AWS CloudWatch
-* Integrated AWS API Gateway and AWS Lambda to manage API requests and redirect them to the appropriate endpoints
-* Integrated with front-end developers to ensure seamless communication between the front-end and back-end systems
-
-## Educations:
-#### Bachelor of Science in Computer Science <span>May 2024</span>
-University of Manitoba, Winnipeg, MB, Canada  
-#### Diploma in Infocomm Technology <span>Jan 2018</span>
-PSB Academy, Singapore  
+* Designed, developed, and maintained RESTful APIs using Node.js and Express.js, enabling seamless handling of CRUD operations for efficient data management
+* Integrated PostgreSQL database and AWS S3 for secure and scalable data storage, ensuring reliability and accessibility of critical application data
+* Deployed RESTful API on AWS Elastic Beanstalk, leveraging AWS CloudWatch for monitoring and logging, resulting in improved efficiency, maintainability, and scalability of the application
+* Automated user authentication and request validation processes by integrating API Gateway and Lambda functions, enhancing security and reducing manual overhead
 
 ## Technical Skills:
-Java, JavaScript, TypeScript, Python, HTML/CSS, React.js, Node.js, Express.js, GitHub, Git Actions, Docker, VS Code, Android Studio, Docker, MySQL, SQL Server, Tailwind CSS, AWS services
+Java, JavaScript, TypeScript, Python, C, C++, HTML/CSS, React.js, Next.js, Node.js, Express.js, GitHub, Git Actions, Docker, VS Code, Android Studio, MySQL, SQL Server, Tailwind CSS, AWS(Lambda, API Gateway, Elastic Beanstalk, CloudWatch)
 
-## Academy Projects:
+## Educations:
+#### Bachelor of Science in Computer Science <span>Jan 2019 - May 2024</span>
+University of Manitoba, Winnipeg, MB, Canada  
+#### Diploma in Infocomm Technology <span>Jan 2017 - Jan 2018</span>
+PSB Academy, Singapore  
+
+## Academic Projects:
 #### Music Player Platform
-* Collaborated with a team of 4 to develop a Spotify clone using pure JavaScript, and HTML/CSS, with a focus on applying UI/UX design principles
-* Implemented core music player functionalities, including play, pause, next/previous track, and utilized browser local storage to track music status
-* Developed over a 3-4 month period
+* Implemented a music player platform using Vanilla JavaScript, HTML, and CSS
+* Achieved core functionalities, including music playback, playlist management, and volume control
+* Demonstrated expertise in front-end development, UI/UX design and team collaboration
 
 #### Food Delivery Mobile App
-* Collaborated in a team of 3 to develop a food delivery app using Android Studio and Java
-* Implemented core functionalities, including login and registration system, intuitive food ordering features, and user account management
-* Demonstrated expertise in front-end development and UI/UX design, while contributing to the implementation of the database
-* Developed over a 3-4 month period
+* Implemented a food delivery app using Android Studio, Java and SQLite
+* Achieved core functionalities, including user registration, login, and order placement
+* Demonstrated expertise in mobile app development, UI/UX design, team collaboration, and agile project management
 
 #### Real-time Chatting Web App
-* Collaborated with a team of 3 to develop a messaging service web app using React.js, Node.js, ASP.net Core and MongoDB.
-* Implemented core functionalities, including user registration, login, and messaging features
-* Achieved instant messaging functionality using SignalR, and utilized MongoDB to store user data
-* Applied best practices in version control using GitHub, and implemented GitHub Actions and Docker for efficient project deployment
-* Developed over a 3-4 month period
+* Implemented a real-time chatting web app using React.js, .NET Core, SignalR and MongoDB
+* Achieved core functionalities, including user registration, login, account management, and real-time chatting
+* Integrated with GitHub Actions for CI/CD pipeline and Dockerized the application for deployment
 
 ## Languages:
 English (Intermediate), Mandarin Chinese (Fluent), Cantonese Chinese (Fluent)
@@ -101,5 +99,9 @@ English (Intermediate), Mandarin Chinese (Fluent), Cantonese Chinese (Fluent)
         margin-left: 30px;
         font-size: 16px;
         line-height: 1.2;
+    }
+
+    td {
+        border-style: none;
     }
 </style>
