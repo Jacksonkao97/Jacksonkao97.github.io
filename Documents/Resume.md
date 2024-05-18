@@ -1,5 +1,5 @@
 # YeeTsung Kao (Jackson)
-<span>Winnipeg, Manitoba, Canada</span>  
+<span>Kota Kinabalu, Sabah, Malaysia</span>  
 <span><Jacksonkao97@gmail.com></span>  
 <span>[LinkedIn Profile](https://www.linkedin.com/in/jackson-kao-654bab1b4/)</span>
 
