@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --shadow-left-right:
+    8px 0 10px -5px rgba(0, 0, 0, 0.3), -8px 0 10px -5px rgba(0, 0, 0, 0.3);
+  --font-nunito: 'Nunito', sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
+}
+
+@media (width >= 40rem) {
+  .br-sm {
+    display: inline;
+  }
+}
+
+@media (width < 40rem) {
+  .br-sm {
+    display: none;
+  }
+}
