@@ -33,7 +33,7 @@
 ## Technical Skills
 
 **Languages & Frameworks:** JavaScript, TypeScript, Node.js, React, Next.js, Express.js, Tailwind CSS  
-**Cloud & DevOps:** AWS (EC2, S3, Elastic Beanstalk, CloudWatch, Amplify, Route 53), Firebase (Functions, Auth, Firestore)  
+**Cloud & DevOps:** AWS (EC2, S3, CloudWatch, Amplify, Route 53), Firebase (Functions, Auth, Firestore, Firebase storage)  
 **Databases:** PostgreSQL, Firestore  
 **AI Integration:** OpenAI API, Google Gemini  
 **Tools & Others:** GitHub, Visual Studio Code, Canva, Figma  

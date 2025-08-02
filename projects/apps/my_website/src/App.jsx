@@ -11,7 +11,7 @@ function App() {
   return (
     <main className="flex h-auto w-full flex-col items-center bg-[#FCEFCB]">
       {/* Container */}
-      <div className="shadow-left-right h-full w-full max-w-[1200px] bg-[#FAD59A]">
+      <div className="shadow-left-right h-full w-full max-w-[1300px] bg-[#FAD59A]">
         {/* Introduction */}
         <section className="flex min-h-screen w-full flex-row items-center justify-between px-[2rem] py-[4rem] sm:px-[5rem] sm:py-[5rem]">
           <div className="flex w-full flex-col justify-center sm:w-[65%]">
@@ -32,7 +32,7 @@ function App() {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { duration: 1, delay: 0.4 } }}
-              className="font-roboto mb-[2rem] text-[1rem] leading-[1.5rem] sm:w-[90%] sm:text-[1.5rem] sm:leading-[2rem]"
+              className="font-roboto mb-[2rem] text-[1rem] leading-[1.5rem] sm:w-[90%] sm:text-[1.2rem] sm:leading-[2rem]"
             >
               I work across stack like{' '}
               <strong>JavaScript, Node.js, React, and PostgreSQL</strong> —
