@@ -1,8 +1,8 @@
 export const Nav = () => {
   return (
     <>
-      <div className="hidden sm:flex absolute"></div>
-      <div className="flex sm:hidden absolute"></div>
+      <div className="absolute hidden sm:flex"></div>
+      <div className="absolute flex sm:hidden"></div>
     </>
   )
 }

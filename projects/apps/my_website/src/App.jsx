@@ -1,11 +1,10 @@
 import { motion } from 'motion/react'
 
-import { Nav } from './components/nav'
+import AWS_svg from './assets/svg/aws_svg'
+import GCP_svg from './assets/svg/gcp_svg'
 import Js_svg from './assets/svg/js_svg'
 import NodeJs_svg from './assets/svg/nodejs_svg'
 import React_svg from './assets/svg/react_svg'
-import GCP_svg from './assets/svg/gcp_svg'
-import AWS_svg from './assets/svg/aws_svg'
 
 function App() {
   return (
@@ -165,7 +164,7 @@ function App() {
               </div>
 
               {/* Skills */}
-              <div className='mt-[1rem]'>
+              <div className="mt-[1rem]">
                 <h2 className="text-xl font-semibold text-black">
                   Technical Skills
                 </h2>
