@@ -7,7 +7,7 @@
 
 ## Work Experience
 
-### Backend Developer  
+### Software Developer  
 
 **CareMate Health**, Winnipeg, MB, Canada *(early-stage healthtech startup)*  
 *Jan 2024 – Apr 2024*
