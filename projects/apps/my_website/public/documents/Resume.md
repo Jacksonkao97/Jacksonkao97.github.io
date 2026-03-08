@@ -18,7 +18,7 @@
 - Integrated **OpenAI** and **Google Gemini** APIs to enhance user engagement through AI-driven features  
 - Collaborated closely with designers and brand teams to translate creative vision into responsive, high-impact web applications  
 
-### Backend Developer  
+### Software Developer  
 
 **CareMate Health**, Winnipeg, MB, Canada *(early-stage healthtech startup)*  
 *Jan 2024 – Apr 2024*
