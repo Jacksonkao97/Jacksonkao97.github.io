@@ -1,7 +1,8 @@
 # Yee Tsung (Jackson) Kao
 
-<Jacksonkao97@gmail.com>  
-[LinkedIn](https://www.linkedin.com/in/jackson-kao-654bab1b4/)
+📞 +60 11-6141-6637  &nbsp;
+📫 <Jacksonkao97@gmail.com>  &nbsp;
+[![Linkedin](https://i.sstatic.net/gVE0j.png) LinkedIn](https://www.linkedin.com/in/jackson-kao-654bab1b4/)
 
 ---
 
