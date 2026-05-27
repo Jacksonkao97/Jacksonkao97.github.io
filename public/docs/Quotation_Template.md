@@ -10,23 +10,22 @@
 
 **Scope of Work**
 
-* **Frontend Development:**
+- **Frontend Development:**
+  - [List tasks: pages, components, responsive design, integrations]
 
-  * [List tasks: pages, components, responsive design, integrations]
-* **Backend Development (if applicable):**
+- **Backend Development (if applicable):**
+  - [List tasks: API setup, database, authentication, business logic]
 
-  * [List tasks: API setup, database, authentication, business logic]
-* **Deployment:**
-
-  * [List tasks: hosting, CI/CD, configuration]
+- **Deployment:**
+  - [List tasks: hosting, CI/CD, configuration]
 
 ---
 
 **Estimated Timeline**
 
-* Week 1: [Deliverable 1]
-* Week 2–3: [Deliverable 2]
-* Week 4: [Testing/Deployment]
+- Week 1: [Deliverable 1]
+- Week 2–3: [Deliverable 2]
+- Week 4: [Testing/Deployment]
 
 **Total Duration:** [X weeks]
 
@@ -45,9 +44,9 @@
 
 **Terms & Conditions**
 
-* Payment schedule: [e.g., 30% upfront, 40% mid-project, 30% on delivery]
-* Revisions: [e.g., 2 rounds included, additional billed hourly]
-* Out-of-scope changes require a new quotation
+- Payment schedule: [e.g., 30% upfront, 40% mid-project, 30% on delivery]
+- Revisions: [e.g., 2 rounds included, additional billed hourly]
+- Out-of-scope changes require a new quotation
 
 ---
 

@@ -1,4 +1,4 @@
-Dear Hiring Manager, 
+Dear Hiring Manager,
 
 I am writing to express my interest in the (Remote) Junior - Middle Fullstack Developer position, as advertised on Linkedin. As a fresh-graduate computer scientist, I am ready to bring my skill and passion for software development and my dedication to learning to your team.
 
