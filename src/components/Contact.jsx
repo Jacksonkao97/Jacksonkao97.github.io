@@ -59,7 +59,10 @@ export default function Contact() {
   const [state, formAction, isPending] = useActionState(sendMessage, null);
 
   return (
-    <section className="flex flex-col justify-center gap-8 bg-transparent px-4 py-20 sm:px-0 md:flex-row">
+    <section
+      id="contact"
+      className="flex flex-col justify-center gap-8 bg-transparent px-4 py-20 sm:px-0 md:flex-row"
+    >
       <div className="w-full space-y-2 md:w-[30%] md:space-y-4">
         <h2 className="text-foreground font-display text-start text-base font-medium md:text-2xl">
           Get in Touch

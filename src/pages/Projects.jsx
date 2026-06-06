@@ -1,5 +1,9 @@
 import ProjectCard from "@/components/ProjectCard";
+import { Button } from "@/components/ui/button";
 import { projects } from "@/constants/projects";
+import { useState } from "react";
+
+const DEFAULT_SHOW = 3;
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const loader = async () => {
@@ -7,6 +11,11 @@ export const loader = async () => {
 };
 
 export default function Projects() {
+  const [showAll, setShowAll] = useState(false);
+
+  const visibleProjects = showAll ? projects : projects.slice(0, DEFAULT_SHOW);
+  const hasMore = projects.length > DEFAULT_SHOW;
+
   return (
     <div className="container mx-auto bg-transparent px-4 py-6 sm:px-0 md:py-24">
       <h1 className="font-display text-foreground mb-2 text-lg font-normal md:text-3xl">
@@ -17,9 +26,23 @@ export default function Projects() {
         skills and experience in web development, design, and problem-solving.
       </p>
 
-      {projects.map((project, index) => (
+      {visibleProjects.map((project, index) => (
         <ProjectCard key={index} index={index + 1} project={project} />
       ))}
+
+      {hasMore && (
+        <div className="mt-12 flex w-full justify-center">
+          <Button
+            variant="outline"
+            className="w-max rounded-none"
+            onClick={() => setShowAll((prev) => !prev)}
+          >
+            {showAll
+              ? "Show Less"
+              : `Show More (${projects.length - DEFAULT_SHOW} more)`}
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
