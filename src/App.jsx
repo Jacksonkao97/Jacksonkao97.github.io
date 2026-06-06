@@ -28,14 +28,14 @@ const router = createHashRouter([
         index: true,
         lazy: () => lazyLoad(() => import("@/pages/Home"), "Home"),
       },
-      // {
-      //   path: "about",
-      //   lazy: () => lazyLoad(() => import("@/pages/About"), "About"),
-      // },
-      // {
-      //   path: "contact",
-      //   lazy: () => lazyLoad(() => import("@/pages/Contact"), "Contact"),
-      // },
+      {
+        path: "projects",
+        lazy: () => lazyLoad(() => import("@/pages/Projects"), "Projects"),
+      },
+      {
+        path: "resume",
+        lazy: () => lazyLoad(() => import("@/pages/Resume"), "Resume"),
+      },
     ],
   },
 ]);

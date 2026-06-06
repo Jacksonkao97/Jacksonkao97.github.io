@@ -1,9 +1,15 @@
-import { projects } from "@/constants/projects";
+import { cn } from "@/lib/utils";
 import mql from "@microlink/mql";
 import { MoveRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
+import { Separator } from "./ui/separator";
+
+const isInverted = (index, enable) => {
+  if (!enable) return false;
+  return index % 2 === 0;
+};
 
 function ProjectImage({ link, name }) {
   const [screenshot, setScreenshot] = useState(null);
@@ -29,20 +35,33 @@ function ProjectImage({ link, name }) {
   }
 
   return (
-    <img src={screenshot} alt={name} className="h-full w-full object-cover" />
+    <img
+      src={screenshot}
+      alt={name}
+      className="border-muted-foreground/50 h-full w-full scale-95 border object-cover duration-200 group-hover:scale-100"
+    />
   );
 }
 
-export default function FeaturedWork() {
+export default function ProjectCard({ index, project }) {
   return (
-    <section className="flex flex-col justify-center space-y-8 bg-transparent px-4 py-20 sm:px-0 md:space-y-10">
-      <h2 className="text-muted-foreground text-start font-mono text-xs font-medium uppercase md:text-sm">
-        Featured Work
-      </h2>
-      <div className="bg-muted/50 flex flex-col-reverse gap-8 border p-4 shadow-2xs sm:flex-row md:p-10">
-        <div className="flex flex-1 flex-col space-y-4">
+    <div
+      className={cn(
+        "group hover:bg-muted/80 flex flex-col gap-8 bg-transparent duration-200",
+        isInverted(index, true) ? "md:flex-row-reverse" : "md:flex-row"
+      )}
+    >
+      <div className="border-foreground aspect-square w-full border md:w-[40%]">
+        <ProjectImage link={project.siteLink} name={project.name} />
+      </div>
+      <div className="flex h-fit flex-row">
+        <Separator
+          orientation="vertical"
+          className="border-muted-foreground hidden md:mr-4 md:block"
+        />
+        <div className="space-y-2 py-0 md:py-2">
           <span className="flex gap-2">
-            {projects[0].technologies.map((tech) => (
+            {project.technologies.map((tech) => (
               <Badge
                 variant="outline"
                 className="bg-background rounded-sm"
@@ -52,11 +71,11 @@ export default function FeaturedWork() {
               </Badge>
             ))}
           </span>
-          <h3 className="font-display text-foreground text-xl font-medium md:text-3xl">
-            {projects[0].name}
+          <h3 className="font-display text-foreground text-base font-medium md:text-2xl">
+            {project.name}
           </h3>
           <p className="text-muted-foreground font-mono text-sm md:text-base">
-            {projects[0].description}
+            {project.description}
           </p>
           <div className="flex gap-8">
             <Button
@@ -65,7 +84,7 @@ export default function FeaturedWork() {
               asChild
             >
               <a
-                href={projects[0].siteLink}
+                href={project.siteLink}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -75,7 +94,7 @@ export default function FeaturedWork() {
             </Button>
             <Button variant="link" className="mt-4 w-max rounded-none" asChild>
               <a
-                href={projects[0].githubLink}
+                href={project.githubLink}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -85,10 +104,7 @@ export default function FeaturedWork() {
             </Button>
           </div>
         </div>
-        <div className="flex w-full items-center justify-center border sm:w-[40%]">
-          <ProjectImage link={projects[0].siteLink} name={projects[0].name} />
-        </div>
       </div>
-    </section>
+    </div>
   );
 }

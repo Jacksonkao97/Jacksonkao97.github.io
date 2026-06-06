@@ -5,7 +5,7 @@ import { Separator } from "./ui/separator";
 export default function Hero() {
   return (
     <section className="flex min-h-[calc(100svh-4rem-1px)] flex-col justify-center bg-transparent px-4 sm:px-0">
-      <h1 className="font-display text-2xl leading-snug font-normal sm:text-5xl">
+      <h1 className="font-display text-foreground text-2xl leading-snug font-normal sm:text-5xl">
         Hi, I'm Jackson Kao <br /> Full-Stack Software Engineer
       </h1>
 

@@ -6,10 +6,8 @@ import { Link, useLocation } from "react-router-dom";
 import { useSidebar } from "./ui/sidebar";
 
 export default function Navbar() {
-  const { hash } = useLocation();
+  const { pathname: currentPath } = useLocation();
   const { toggleSidebar } = useSidebar();
-
-  const currentPath = hash.replace("#", "") || "/";
 
   return (
     <header className="border-border/40 bg-background/80 sticky top-0 z-50 w-full border-b backdrop-blur-sm">
@@ -52,7 +50,7 @@ export default function Navbar() {
 
         <Button
           size="sm"
-          className="border-accent-foreground ring-background rounded-none border ring ring-offset-0 ring-inset"
+          className="border-foreground ring-background rounded-none border ring ring-offset-0 ring-inset"
           asChild
         >
           <a href="/docs/Resume.pdf" download>

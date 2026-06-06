@@ -21,12 +21,14 @@ export default function TechStack() {
 
   return (
     <section className="flex flex-col justify-center space-y-8 bg-transparent px-4 py-20 sm:px-0 md:space-y-16">
-      <h2 className="font-display text-start text-lg font-medium md:text-3xl">
+      <h2 className="font-display text-foreground text-start text-lg font-medium md:text-3xl">
         What I Work With
       </h2>
       <div className="flex flex-wrap gap-4">
         <div className="flex min-w-40 flex-1 flex-col gap-2">
-          <h3 className="font-mono text-sm font-medium md:text-lg">Frontend</h3>
+          <h3 className="text-foreground font-mono text-sm font-medium md:text-lg">
+            Frontend
+          </h3>
           <div className="flex">
             <Separator orientation="vertical" className="mr-4 ml-2 h-auto" />
             <ul className="flex flex-col gap-1">
@@ -46,7 +48,9 @@ export default function TechStack() {
           </div>
         </div>
         <div className="flex min-w-40 flex-1 flex-col gap-2">
-          <h3 className="font-mono text-sm font-medium md:text-lg">Backend</h3>
+          <h3 className="text-foreground font-mono text-sm font-medium md:text-lg">
+            Backend
+          </h3>
           <div className="flex">
             <Separator orientation="vertical" className="mr-4 ml-2 h-auto" />
             <ul className="flex flex-col gap-1">
@@ -66,7 +70,7 @@ export default function TechStack() {
           </div>
         </div>
         <div className="flex min-w-40 flex-1 flex-col gap-2">
-          <h3 className="font-mono text-sm font-medium md:text-lg">
+          <h3 className="text-foreground font-mono text-sm font-medium md:text-lg">
             Frameworks
           </h3>
           <div className="flex">
@@ -88,7 +92,9 @@ export default function TechStack() {
           </div>
         </div>
         <div className="flex min-w-40 flex-1 flex-col gap-2">
-          <h3 className="font-mono text-sm font-medium md:text-lg">Tools</h3>
+          <h3 className="text-foreground font-mono text-sm font-medium md:text-lg">
+            Tools
+          </h3>
           <div className="flex">
             <Separator orientation="vertical" className="mr-4 ml-2 h-auto" />
             <ul className="flex flex-col gap-1">
@@ -108,7 +114,9 @@ export default function TechStack() {
           </div>
         </div>
         <div className="flex min-w-40 flex-1 flex-col gap-2">
-          <h3 className="font-mono text-sm font-medium md:text-lg">DevOps</h3>
+          <h3 className="text-foreground font-mono text-sm font-medium md:text-lg">
+            DevOps
+          </h3>
           <div className="flex">
             <Separator orientation="vertical" className="mr-4 ml-2 h-auto" />
             <ul className="flex flex-col gap-1">
