@@ -9,7 +9,7 @@ export default function Hero() {
         Hi, I'm Jackson Kao <br /> Full-Stack Software Engineer
       </h1>
 
-      <Separator className="bg-foreground my-4 w-20! sm:my-6 sm:w-30!" />
+      <Separator className="bg-muted-foreground my-4 w-20! sm:my-6 sm:w-30!" />
 
       <p className="text-muted-foreground max-w-3xl text-sm leading-relaxed sm:text-lg">
         I’m a Software Engineer specializing in building full-stack web
@@ -20,13 +20,13 @@ export default function Hero() {
       </p>
 
       <div className="mt-6 flex gap-4">
-        <Button asChild>
-          <Link to="/projects" className="h-10 w-40" viewTransition>
+        <Button className="h-10 w-40 rounded-none" asChild>
+          <Link to="/projects" viewTransition>
             View Projects
           </Link>
         </Button>
-        <Button variant="outline" asChild>
-          <Link to="/contact" className="h-10 w-40" viewTransition>
+        <Button variant="outline" className="h-10 w-40 rounded-none" asChild>
+          <Link to="/contact" viewTransition>
             Contact Me
           </Link>
         </Button>

@@ -50,7 +50,11 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <Button size="sm" asChild>
+        <Button
+          size="sm"
+          className="border-accent-foreground ring-background rounded-none border ring ring-offset-0 ring-inset"
+          asChild
+        >
           <a href="/docs/Resume.pdf" download>
             <Download className="mr-2 h-4 w-4" />
             Download CV
