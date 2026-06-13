@@ -15,9 +15,9 @@ export default function Resume() {
   return (
     <div className="container mx-auto w-full px-4 py-8 sm:px-0 md:py-24">
       <div className="mx-auto flex w-full max-w-4xl flex-col">
-        <div className="mb-6 flex flex-col space-y-2">
-          <h2 className="font-display text-foreground text-2xl font-medium md:text-4xl">
-            Resume
+        <div className="mb-6 flex flex-col space-y-3">
+          <h2 className="font-display text-foreground text-2xl font-medium md:text-5xl">
+            Yee Tsung (Jackson) Kao
           </h2>
           <p className="text-muted-foreground max-w-2xl font-mono text-sm md:text-base">
             Full Stack Engineer specializing in React, Next.js, and Cloud

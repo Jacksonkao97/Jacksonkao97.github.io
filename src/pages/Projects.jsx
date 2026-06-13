@@ -26,22 +26,30 @@ export default function Projects() {
         skills and experience in web development, design, and problem-solving.
       </p>
 
-      {visibleProjects.map((project, index) => (
-        <ProjectCard key={index} index={index + 1} project={project} />
-      ))}
-
-      {hasMore && (
-        <div className="mt-12 flex w-full justify-center">
-          <Button
-            variant="outline"
-            className="w-max rounded-none"
-            onClick={() => setShowAll((prev) => !prev)}
-          >
-            {showAll
-              ? "Show Less"
-              : `Show More (${projects.length - DEFAULT_SHOW} more)`}
-          </Button>
+      {projects.length === 0 ? (
+        <div className="text-muted-foreground flex flex-col items-center justify-center border border-dashed py-24 font-mono text-sm">
+          No projects yet — check back soon.
         </div>
+      ) : (
+        <>
+          {visibleProjects.map((project, index) => (
+            <ProjectCard key={index} index={index + 1} project={project} />
+          ))}
+
+          {hasMore && (
+            <div className="mt-12 flex w-full justify-center">
+              <Button
+                variant="outline"
+                className="w-max rounded-none"
+                onClick={() => setShowAll((prev) => !prev)}
+              >
+                {showAll
+                  ? "Show Less"
+                  : `Show More (${projects.length - DEFAULT_SHOW} more)`}
+              </Button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
