@@ -5,6 +5,7 @@ import {
   languages,
   personalInfo,
 } from "@/constants/resume";
+import { trackEvent } from "@/lib/analytics";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const loader = async () => {
@@ -37,6 +38,7 @@ export default function Resume() {
             :
             <a
               href={`mailto:${personalInfo.email}`}
+              onClick={() => trackEvent("Outbound", "click", "email")}
               className="text-muted-foreground hover:text-foreground transition-colors hover:underline"
             >
               {personalInfo.email}
@@ -58,6 +60,7 @@ export default function Resume() {
               href={personalInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("Outbound", "click", "LinkedIn")}
               className="text-muted-foreground hover:text-foreground transition-colors hover:underline"
             >
               {personalInfo.linkedin}

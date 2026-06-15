@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { navLinks } from "@/constants/navLinks";
+import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { Download, MenuIcon } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
@@ -24,9 +25,9 @@ export default function Navbar() {
 
           <Link
             to="/"
-            className="font-display text-lg leading-tight tracking-tight uppercase"
+            className="font-display text-lg leading-tight tracking-tight"
           >
-            My Portfolio
+            jacksonkao.dev
           </Link>
         </div>
 
@@ -53,7 +54,11 @@ export default function Navbar() {
           className="border-foreground ring-background rounded-none border ring ring-offset-0 ring-inset"
           asChild
         >
-          <a href="/docs/Resume.pdf" download>
+          <a
+            href="/docs/Resume.pdf"
+            download
+            onClick={() => trackEvent("Resume", "download", "Navbar")}
+          >
             <Download className="mr-2 h-4 w-4" />
             Download CV
           </a>

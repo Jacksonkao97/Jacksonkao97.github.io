@@ -1,4 +1,5 @@
 import { personalInfo } from "@/constants/resume";
+import { trackEvent } from "@/lib/analytics";
 
 export default function Footer() {
   return (
@@ -13,6 +14,7 @@ export default function Footer() {
             href={personalInfo.github}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent("Outbound", "click", "GitHub")}
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             <svg viewBox="0 0 128 128" className="h-8 w-8">
@@ -30,6 +32,7 @@ export default function Footer() {
             href={personalInfo.linkedin}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent("Outbound", "click", "LinkedIn")}
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             <svg viewBox="0 0 128 128" className="h-8 w-8">

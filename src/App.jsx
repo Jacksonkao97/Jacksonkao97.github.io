@@ -2,6 +2,7 @@ import { createHashRouter, Outlet, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import RouteTracker from "./components/RouteTracker";
 import Sidebar from "./components/Sidebar";
 import { SidebarInset, SidebarProvider } from "./components/ui/sidebar";
 import lazyLoad from "./utils/lazyLoad";
@@ -9,6 +10,7 @@ import lazyLoad from "./utils/lazyLoad";
 const Layout = () => {
   return (
     <SidebarProvider defaultOpen={false} className="flex-1 flex-col">
+      <RouteTracker />
       <Sidebar />
       <Navbar />
       <SidebarInset className="m-0! rounded-none! shadow-none!">
