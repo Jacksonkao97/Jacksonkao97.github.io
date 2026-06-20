@@ -1,0 +1,119 @@
+/* ===========================
+   Resume CSS for markdown-pdf
+   =========================== */
+
+/* Base */
+body {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #1a1a1a;
+  margin: 0;
+  padding: 0 4px;
+}
+
+/* Headings */
+h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin: 0 0 4px 0;
+  color: #0f0f0f;
+}
+
+h2 {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #2563eb;
+  margin: 16px 0 4px 0;
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid #2563eb;
+}
+
+h3 {
+  font-size: 12px;
+  font-weight: 700;
+  margin: 10px 0 1px 0;
+  color: #0f0f0f;
+}
+
+/* Header contact line (paragraph right after h1) */
+h1 + p {
+  font-size: 10.5px;
+  color: #444;
+  margin: 0 0 2px 0;
+}
+
+/* Horizontal rule */
+hr {
+  display: none;
+}
+
+/* Paragraphs */
+p {
+  margin: 2px 0 6px 0;
+  color: #333;
+}
+
+/* Bold labels inside paragraphs (e.g. company name, dates) */
+p > strong,
+p > em {
+  color: #111;
+}
+
+/* Italic (dates, subtitles) */
+em {
+  font-style: normal;
+  color: #555;
+  font-size: 10.5px;
+}
+
+/* Lists */
+ul {
+  margin: 4px 0 6px 0;
+  padding-left: 18px;
+}
+
+li {
+  margin-bottom: 3px;
+  color: #333;
+}
+
+/* Bold inside list items (skill category labels) */
+li > strong {
+  color: #0f0f0f;
+}
+
+/* Links */
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Page break — keep job entries together */
+h3 {
+  page-break-after: avoid;
+}
+
+h3 + p {
+  page-break-after: avoid;
+}
+
+/* Prevent orphaned bullet points from a job section */
+ul {
+  page-break-inside: avoid;
+}
+
+/* Keep each work experience block together */
+h3,
+h3 + p,
+h3 + p + p,
+h3 + p + p + ul {
+  page-break-inside: avoid;
+}
