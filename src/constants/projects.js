@@ -1,10 +1,10 @@
 export const projects = [
-  // {
-  //   name: "Handcrafted Product Catalog",
-  //   description:
-  //     "A web application that allows users to browse and search for desired handcrafted products, such as personalized drawn mugs, hand-drawn art images, and keychains. The application features a clean and intuitive interface, making it easy for users to find products and contact sellers for inquiries.",
-  //   technologies: ["React", "TypeScript", "Tailwind CSS"],
-  //   siteLink: "https://artofsandra.wixsite.com/personalizedgifts",
-  //   githubLink: null,
-  // },
+  {
+    name: "Endless Runner Game",
+    description:
+      "A simple endless runner game built with Phaser 4 and TypeScript. The game features a character that runs endlessly while avoiding obstacles and getting highest scores.",
+    technologies: ["Phaser 4", "TypeScript"],
+    siteLink: "https://jacksonkao97.github.io/endless-runner-phaser/",
+    githubLink: "https://github.com/Jacksonkao97/endless-runner-phaser",
+  },
 ];
