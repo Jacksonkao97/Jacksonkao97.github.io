@@ -2,7 +2,7 @@
 
 ### Full Stack Developer
 
-<jacksonkao97@gmail.com> | +6011-6141-6637 | Kuala Lumpur, Malaysia | [LinkedIn](https://www.linkedin.com/in/jackson-kao-654bab1b4) | [Portfolio](https://jacksonkao97.github.io/)
+<jacksonkao97@gmail.com> | +6011-6141-6637 | Kuala Lumpur, Malaysia | [LinkedIn](https://www.linkedin.com/in/jackson-kao-654bab1b4)
 
 ---
 
