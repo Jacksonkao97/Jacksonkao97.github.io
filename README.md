@@ -1,136 +1,83 @@
-# Develop My Resume using markdown and host it on GitHub
+# jacksonkao.dev
 
-##### Build a well-formatted resume using markdown and hosting it online. Stop wasting time and money on printing out the resume! To make our life easier, develop a resume with Andrew Etter's book Modern Technical Writing's principle and host it on GitHub
+My personal portfolio site, with a home page, a projects showcase, and an online resume.
 
-## Table of Contents
+**Live site:** https://jacksonkao97.github.io
 
-- [Few tools we need and ....._it's free_](#tools-needed-for-hosting-on-github)
-- [Formatting Resume with Markdown](#formatting-resume-with-markdown)
-- [Hosting a website](#hosting-a-resume-on-github)
-- [Resources](#resources)
-- [Authors and Acknowledge](#authors)
-- [FAQs](#faqs)
+## Tech stack
 
-### Tools needed for hosting on GitHub
+- [React 19](https://react.dev/) + [Vite](https://vite.dev/)
+- [Tailwind CSS v4](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/) (Radix primitives, Lucide icons)
+- [React Router](https://reactrouter.com/) (hash routing, so it works on GitHub Pages)
+- [Microlink](https://microlink.io/) for live project screenshots
+- [Web3Forms](https://web3forms.com/) for the contact form
+- Google Analytics 4 via [react-ga4](https://github.com/codler/react-ga4)
+- Deployed to GitHub Pages with GitHub Actions
 
-##### 1. [GitHub](https://github.com/)
+## Getting started
 
-> A platform that provide hosting and version control features. For me, GitHub is just a free server that I can store my files and folders on it, it is similar to google cloud but with more features. One of the features that I liked and will want to share to you later is the hosting website using GitHub.
+Requires **Node.js 24**, the version CI uses.
 
-##### 2. [Visual Studio Code](https://code.visualstudio.com/)
+```bash
+npm install
+npm run dev        # http://localhost:3000
+```
 
-> A software/editor that allow people to coding/programming their project. I often uses vscode to programming my project, since vscode has a very range of language extension that allow me to programming different language on one editor such as .markdown, .javascript, .html, and etc. Also, people can access their files and folders on Github using vscode, which makes people life more easy.
+### Environment variables
 
-##### 3. [GitHub pages](https://pages.github.com/)
+Create a `.env.local` in the project root. It is gitignored.
 
-> A website that provide very detail information about how to use host a website using GitHub.
+```bash
+VITE_WEB3FORMS_KEY=your-web3forms-access-key   # contact form
+VITE_GA_ID=G-XXXXXXXXXX                        # Google Analytics 4 measurement ID
+```
 
-##### 4. [Jekyll](https://jekyllrb.com/)(Optional)
+Both are optional locally. Without `VITE_WEB3FORMS_KEY` the contact form can't send messages. Analytics only runs in production builds with `VITE_GA_ID` set; otherwise it's skipped.
 
-> A website that provided a lot of template that free for everyone to use to aply to their resume or website. They also help people to host a static/local website, so that people like me who hate waiting can look at the effect on the static website immediately after I changed something to my website.
+### Scripts
 
-### Formatting Resume with Markdown
+| Command                  | Description                          |
+| ------------------------ | ------------------------------------ |
+| `npm run dev`            | Start the dev server on port 3000    |
+| `npm run build`          | Production build to `dist/`          |
+| `npm run preview`        | Serve the production build locally   |
+| `npm run lint`           | Run ESLint                           |
+| `npx prettier --write .` | Format code (sorts Tailwind classes) |
 
-#### Step 1: Installation of VScode
+## Project structure
 
-> - [Here is the installation of VScode.](https://code.visualstudio.com/learn/get-started/basics) This is the official website of VScode and it contains very helpful information about how to install and setup VScode into Computer.
+```
+src/
+├── pages/        Route pages (Home, Projects, Resume), lazy-loaded
+├── components/   Site components (Navbar, Hero, ProjectCard, Contact, ...)
+│   └── ui/       shadcn/ui components
+├── constants/    Site content: projects, tech stack, resume, nav links
+├── lib/          analytics helpers and the cn() class-name utility
+└── utils/        lazyLoad (route loading with chunk-error recovery)
+public/
+├── docs/         Resume.md (source), resume.css (PDF styling), Resume.pdf
+└── sitemap.xml
+```
 
-#### Step 2: Start writing Resume using Markdown language
+## Updating content
 
-> - Now create a new file in VScode by select the **File** > **New File** at the top-left corner.
+Most of the site's content lives in `src/constants/`:
 
-![](./Material/Pic/createTextVS.PNG)
+- **Projects:** add an entry to `projects.js`. The first project is featured on the home page. `siteLink` must be a live public URL, because the preview image is a Microlink screenshot of it.
+- **Tech stack:** edit `techStack.js`. Entries with an `icon` also appear in the scrolling logo strip.
+- **Resume:** the resume exists in three places, and they must be updated together:
+  1. `src/constants/resume.js` for the `/resume` page
+  2. `public/docs/Resume.md`, the source for the PDF, styled with `public/docs/resume.css`
+  3. `public/docs/Resume.pdf`, served by the "Download CV" button
+- **New page:**
+  1. Add a route in `src/App.jsx`.
+  2. Add a link in `src/constants/navLinks.js`.
+  3. Add the URL to `public/sitemap.xml`. Use the hash form, e.g. `https://jacksonkao97.github.io/#/projects`.
 
-> - Continue by naming the file with this formant
+## Deployment
 
-![](./Material/Pic/namingMd.PNG)
+Every push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds the site and publishes `dist/` to GitHub Pages. `VITE_WEB3FORMS_KEY` and `VITE_GA_ID` are read from the repository's Actions secrets.
 
-> - And now start writing with markdown language. [Here have some tutorial about how to write in markdown.](#resources)
+## License
 
-### Hosting a resume on GitHub
-
-#### Step 1: Create a repository on GitHub
-
-> - Visit to [GitHub website](https://github.com/) and login to my account(create an account if do not have one).
-> - Click on the plus sign button on the top right corner which beisde to my profile picture, and select the **New repository** from the dropdown menu.
-
-![](./Material/Gif/createRepo_p1.gif)
-
-> - Create the repository with this format.
-
-![](./Material/Pic/namingRepo.png)
-
-> - Finally, set the repository to public and hit the **Create Repository** button.
-
-#### Step 2: Adding my resume to the repository
-
-> - Go to the repository that just created.
-> - By searching the repository name on the top-left corner.
-
-![](./Material/Pic/findRepo.png)
-
-> - Now, adding my resume to the repository by clicking the **Add file** button and select the upload file([might need to create a new file if do not have a resume yet](#formatting-resume-with-markdown))
-
-![](./Material/Gif/uploadFileRepo.gif)
-
-> - Once the resume is up, time to host it on Github.
-
-#### Step 3: Using Jekyll to host my resume
-
-> - First, create a new file in repository and name it **\_config.yml**. The step is similar as step 2 but choosing the **Create new file** from the dropdown.
-
-![](./Material/Pic/namingYML.PNG)
-
-> - Inside the new file, passing Jekyll code in it from [here.](https://jekyllrb.com/docs/configuration/default/) _Remember copy all the code._
-
-![](./Material/Pic/configYML.PNG)
-
-> - After copying all the code, commit the changes.
-
-![](./Material/Pic/commitChanges.PNG)
-
-> - Finally, let view the resume online by typing the repository name with **/resumeFileName.html** on the browser and hit Enter.
-
-![](./Material/Pic/finalStep.PNG)
-
-## Resources
-
-- [Modern Technical Writing: An Introduction to Software Documentation](https://www.amazon.ca/Modern-Technical-Writing-Introduction-Documentation-ebook/dp/B01A2QL9SS)
-- [Markdown Tutorial](https://www.markdowntutorial.com/)
-- [Markdown cheat sheet](https://www.markdownguide.org/basic-syntax/)
-- [GitHub pages](https://pages.github.com/)
-- [Jekll](https://jekyllrb.com/)
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [Markdown in Visual Studio Code](https://code.visualstudio.com/docs/languages/markdown)
-- [Markdown to GitHub Pages](https://nicolas-van.github.io/easy-markdown-to-github-pages/)
-
-## Authors
-
-- [Jacksonkao](https://github.com/Jacksonkao97)
-- [Meenal Bhatia]()
-- [Maxim Omelchenko]()
-- [Tirenioluwa Biodun-Kuti]()
-- [James Grant](https://github.com/sproogen)
-- [Billie Thompson](https://github.com/PurpleBooth)
-
-## Acknowledgements
-
-- [Awesome README](https://github.com/matiassingers/awesome-readme)
-- [Good README Template](https://github.com/PurpleBooth/a-good-readme-template)
-- [Resume template](https://github.com/sproogen/modern-resume-theme)
-
-## FAQs
-
-#### 1. Why is Markdown better than a word processor?
-
-- Formatting by code.
-- No complicate features.
-- Easy to use.
-- Easy to convert to other file type.
-- Do not have fancy stuff.
-
-#### 2. Why is my resume not showing up?
-
-- Make sure the Github server is not down.
-- Make sure put the resume in the right path.
-- Check the setting in the repository that uses to hosting the resume, make sure the hosting branch is the correct branch.
+[MIT](LICENSE) © Jackson Kao

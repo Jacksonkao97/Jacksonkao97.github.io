@@ -1,18 +1,19 @@
 import ReactGA from "react-ga4";
 
-const isProd = import.meta.env.PROD;
+const gaId = import.meta.env.VITE_GA_ID;
+const isEnabled = import.meta.env.PROD && Boolean(gaId);
 
 export const initGA = () => {
-  if (!isProd) return;
-  ReactGA.initialize(import.meta.env.VITE_GA_ID); // your gtag ID
+  if (!isEnabled) return;
+  ReactGA.initialize(gaId);
 };
 
 export const trackPage = (path) => {
-  if (!isProd) return;
+  if (!isEnabled) return;
   ReactGA.send({ hitType: "pageview", page: path });
 };
 
 export const trackEvent = (category, action, label) => {
-  if (!isProd) return;
+  if (!isEnabled) return;
   ReactGA.event({ category, action, label });
 };
