@@ -29,7 +29,7 @@ Pushing to `main` triggers `.github/workflows/deploy.yml`. It runs `npm ci && np
 
 The build reads two env vars, which come from repo secrets in CI. Locally, put them in a gitignored `.env.local`:
 
-- `VITE_GA_ID`: Google Analytics 4 ID. `src/lib/analytics.js` does nothing unless `import.meta.env.PROD` is set, so analytics never fires under `npm run dev`. In a production build without `VITE_GA_ID`, `ReactGA.initialize` throws and the page renders blank. To smoke-test `npm run build && npm run preview` locally, set any dummy ID.
+- `VITE_GA_ID`: Google Analytics 4 ID. `src/lib/analytics.js` does nothing unless this is a production build and `VITE_GA_ID` is set. All three helpers (`initGA`, `trackPage`, `trackEvent`) share that `isEnabled` guard, so analytics never fires under `npm run dev` or in a local build without the ID.
 - `VITE_WEB3FORMS_KEY`: access key for the contact form, which POSTs directly to `api.web3forms.com` from `Contact.jsx`.
 
 ## Architecture

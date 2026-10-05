@@ -32,7 +32,7 @@ VITE_WEB3FORMS_KEY=your-web3forms-access-key   # contact form
 VITE_GA_ID=G-XXXXXXXXXX                        # Google Analytics 4 measurement ID
 ```
 
-Analytics only runs in production builds. Under `npm run dev` it does nothing. `npm run build` / `npm run preview` need `VITE_GA_ID` to be set, or the page renders blank.
+Both are optional locally. Without `VITE_WEB3FORMS_KEY` the contact form can't send messages. Analytics only runs in production builds with `VITE_GA_ID` set; otherwise it's skipped.
 
 ### Scripts
 
