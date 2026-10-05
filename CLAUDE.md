@@ -21,7 +21,12 @@ There is no test suite.
 
 Use Node 24 / npm 11 to match CI. When changing dependencies, use npm 11 (`npx npm@11 install ...` if the local npm is 10). npm 10 fails with ERESOLVE on `@vitejs/plugin-react`'s optional-peer chain: `@rolldown/plugin-babel` → `@babel/plugin-transform-runtime@8` → `@babel/core@8`, which clashes with the Babel 7 used by shadcn and eslint-plugin-react-hooks. npm 11 resolves this chain, and the resulting lockfile works with `npm ci` on both versions.
 
-`npm run lint` and `prettier --check` already fail on the shadcn-generated files in `src/components/ui/` and on `src/hooks/use-mobile.js`. When you lint, focus on the files you changed, and don't reformat the generated files unless asked. CI does not run lint.
+`npm run lint` and `npx prettier --check .` both pass, and should stay clean. CI does not run either one.
+
+Some files are deliberately excluded:
+
+- ESLint (`globalIgnores` in `eslint.config.js`) and Prettier (`.prettierignore`) skip the shadcn-generated code in `src/components/ui/` and `src/hooks/use-mobile.js`. `shadcn add` regenerates these files, so leave their style as generated.
+- Prettier also skips `public/docs/Resume.md`, so the PDF source stays as authored.
 
 ## Deployment
 
