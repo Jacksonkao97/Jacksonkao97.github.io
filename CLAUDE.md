@@ -6,8 +6,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Personal portfolio site for Jackson Kao, served at https://jacksonkao97.github.io. It is a Vite + React 19 single-page app using Tailwind CSS v4 and shadcn/ui, written in plain JavaScript (JSX, no TypeScript).
 
-`README.md` is out of date. It describes an older Jekyll/Markdown resume setup and references a `Material/` folder that no longer exists. Don't rely on it for how the project works.
-
 ## Commands
 
 ```bash
@@ -21,6 +19,8 @@ npx shadcn@latest add <name>   # add a shadcn/ui component (components.json: sty
 
 There is no test suite.
 
+Use Node 24 / npm 11 to match CI. When changing dependencies, use npm 11 (`npx npm@11 install ...` if the local npm is 10). npm 10 fails with ERESOLVE on `@vitejs/plugin-react`'s optional-peer chain: `@rolldown/plugin-babel` → `@babel/plugin-transform-runtime@8` → `@babel/core@8`, which clashes with the Babel 7 used by shadcn and eslint-plugin-react-hooks. npm 11 resolves this chain, and the resulting lockfile works with `npm ci` on both versions.
+
 `npm run lint` and `prettier --check` already fail on the shadcn-generated files in `src/components/ui/` and on `src/hooks/use-mobile.js`. When you lint, focus on the files you changed, and don't reformat the generated files unless asked. CI does not run lint.
 
 ## Deployment
@@ -28,7 +28,8 @@ There is no test suite.
 Pushing to `main` triggers `.github/workflows/deploy.yml`. It runs `npm ci && npm run build` on Node 24 and publishes `dist/` to GitHub Pages. `dist/` is gitignored and must never be committed.
 
 The build reads two env vars, which come from repo secrets in CI. Locally, put them in a gitignored `.env.local`:
-- `VITE_GA_ID`: Google Analytics 4 ID. `src/lib/analytics.js` does nothing unless `import.meta.env.PROD` is set, so analytics never fires under `npm run dev`.
+
+- `VITE_GA_ID`: Google Analytics 4 ID. `src/lib/analytics.js` does nothing unless `import.meta.env.PROD` is set, so analytics never fires under `npm run dev`. In a production build without `VITE_GA_ID`, `ReactGA.initialize` throws and the page renders blank. To smoke-test `npm run build && npm run preview` locally, set any dummy ID.
 - `VITE_WEB3FORMS_KEY`: access key for the contact form, which POSTs directly to `api.web3forms.com` from `Contact.jsx`.
 
 ## Architecture
@@ -40,6 +41,7 @@ Every page loads lazily through `src/utils/lazyLoad.js`. That helper expects eac
 **Layout.** The `Layout` in `App.jsx` wraps every route in the shadcn `SidebarProvider`. The sidebar is the mobile nav only (`md:hidden`, toggled from `Navbar`). Desktop nav links live in `Navbar`. Both read from `src/constants/navLinks.js`. `RouteTracker` sends a GA pageview on every pathname change.
 
 **Adding or hiding a page** takes three changes:
+
 1. Add the route in `App.jsx`.
 2. Add the link in `constants/navLinks.js`.
 3. Add the URL to `public/sitemap.xml`.
@@ -47,11 +49,13 @@ Every page loads lazily through `src/utils/lazyLoad.js`. That helper expects eac
 The About page exists but is disabled: it is commented out in both `App.jsx` and `navLinks.js`.
 
 **Content is data-driven.** Site content lives in `src/constants/`, and components only render it:
+
 - `projects.js`: `projects[0]` is automatically the "Featured Work" on Home, and `Projects` shows the first 3 projects with a "Show More" button. `ProjectCard` and `FeaturedWork` fetch each project's preview image at runtime from `siteLink` via `@microlink/mql` screenshots, so `siteLink` must be a live public URL.
 - `techStack.js`: grouped tech lists. Entries with an `icon` (SVGs imported from `src/assets/icons/`) also appear in the Home marquee.
 - `resume.js`: personal info, experience, education and languages for the `/resume` page and the footer links.
 
 **The resume exists in three places, which must be kept in sync by hand:**
+
 - `src/constants/resume.js`: the web resume page.
 - `public/docs/Resume.md`: the source for the PDF, styled by `public/docs/resume.css` for markdown-pdf.
 - `public/docs/Resume.pdf`: the file the navbar's "Download CV" button serves.
