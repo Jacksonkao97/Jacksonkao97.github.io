@@ -1,31 +1,11 @@
-import {
-  createHashRouter,
-  Outlet,
-  RouterProvider,
-  ScrollRestoration,
-} from "react-router-dom";
-import "./App.css";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import { createBrowserRouter } from "react-router-dom";
+import Layout from "./components/Layout";
 import RouteError from "./components/RouteError";
-import RouteTracker from "./components/RouteTracker";
 import lazyLoad from "./utils/lazyLoad";
 
-const Layout = () => {
-  return (
-    <div className="flex min-h-svh w-full flex-col">
-      <ScrollRestoration />
-      <RouteTracker />
-      <Navbar />
-      <main className="bg-background relative flex w-full flex-1 flex-col">
-        <Outlet />
-      </main>
-      <Footer />
-    </div>
-  );
-};
-
-const router = createHashRouter([
+// Each page path also needs an entry in src/constants/pageMeta.js so it gets
+// its title/description and is prerendered and listed in the sitemap.
+export const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
@@ -60,7 +40,3 @@ const router = createHashRouter([
     ],
   },
 ]);
-
-export default function App() {
-  return <RouterProvider router={router} />;
-}

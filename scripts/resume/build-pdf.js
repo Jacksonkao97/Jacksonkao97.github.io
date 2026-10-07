@@ -1,13 +1,11 @@
 // Generates public/docs/Resume.pdf from src/constants/resume.js, the single
 // source for the resume. Run with `npm run resume:pdf`.
 //
-// Uses an installed Google Chrome via playwright-core (no browser download).
-// Set CHROME_PATH to use a different Chrome/Chromium binary.
+// Uses an installed Google Chrome (see scripts/lib/chrome.js).
 import { mkdir, readFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { chromium } from "playwright-core";
 import {
   education,
   experiences,
@@ -16,6 +14,7 @@ import {
   skills,
   summary,
 } from "../../src/constants/resume.js";
+import { launchChrome } from "../lib/chrome.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, "../..");
@@ -141,18 +140,7 @@ async function main() {
   const css = (await fontFace()) + (await readFile(join(here, "resume.css")));
   const html = renderHtml(css);
 
-  const browser = await chromium
-    .launch(
-      process.env.CHROME_PATH
-        ? { executablePath: process.env.CHROME_PATH }
-        : { channel: "chrome" }
-    )
-    .catch((error) => {
-      throw new Error(
-        "Could not start Chrome. Install Google Chrome or set CHROME_PATH " +
-          `to a Chrome/Chromium binary.\n${error.message}`
-      );
-    });
+  const browser = await launchChrome();
 
   try {
     const page = await browser.newPage();

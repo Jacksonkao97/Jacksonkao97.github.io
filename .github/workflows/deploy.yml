@@ -1,7 +1,8 @@
 name: Build and Deploy
 
-# Every push runs the checks and builds the site and resume PDF (attached to
-# the run as the "resume-pdf" artifact). Only pushes to main deploy.
+# Every push runs the checks, builds and prerenders the site and builds the
+# resume PDF (attached to the run as the "resume-pdf" artifact). Only pushes
+# to main deploy.
 on:
   push:
   workflow_dispatch:
@@ -49,6 +50,10 @@ jobs:
         env:
           VITE_WEB3FORMS_KEY: ${{ secrets.VITE_WEB3FORMS_KEY }}
           VITE_GA_ID: ${{ secrets.VITE_GA_ID }}
+
+      # Renders each page to static HTML and writes sitemap.xml (also Chrome)
+      - name: Prerender pages
+        run: npm run prerender
 
       - name: Upload resume PDF
         uses: actions/upload-artifact@v4
