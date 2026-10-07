@@ -4,6 +4,8 @@ import {
   experiences,
   languages,
   personalInfo,
+  skills,
+  summary,
 } from "@/constants/resume";
 import { trackEvent } from "@/lib/analytics";
 
@@ -21,9 +23,7 @@ export default function Resume() {
             Yee Tsung (Jackson) Kao
           </h2>
           <p className="text-muted-foreground max-w-2xl font-mono text-sm md:text-base">
-            Full Stack Engineer specializing in React, Next.js, and Cloud
-            Infrastructure. Building scalable web experiences, cloud solutions,
-            and AI-driven applications. Based in Malaysia.
+            {summary}
           </p>
           <span className="mt-2 mr-auto flex items-center justify-center gap-2">
             <svg
@@ -91,12 +91,34 @@ export default function Resume() {
                     key={index}
                     className="text-muted-foreground text-xs md:text-base"
                   >
-                    {point}
+                    <span className="text-foreground font-medium">
+                      {point.lead}
+                    </span>{" "}
+                    {point.text}
                   </li>
                 ))}
               </ul>
             </div>
           ))}
+        </section>
+
+        <section className="mb-16 space-y-6 md:space-y-10">
+          <h4 className="text-muted-foreground font-mono text-sm font-medium md:text-lg">
+            Technical Skills
+          </h4>
+          <ul className="flex list-disc flex-col gap-2 pl-4">
+            {skills.map((data) => (
+              <li
+                key={data.category}
+                className="text-muted-foreground text-xs md:text-base"
+              >
+                <span className="text-foreground font-medium">
+                  {data.category}:
+                </span>{" "}
+                {data.items}
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section className="mb-16 space-y-6 md:space-y-10">
