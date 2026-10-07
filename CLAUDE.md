@@ -43,11 +43,17 @@ The build reads two env vars, which come from repo secrets in CI. Locally, put t
 
 Every page loads lazily through `src/utils/lazyLoad.js`. That helper expects each page module to export a default component plus a named `loader`, which is why each page carries an `eslint-disable-next-line react-refresh/only-export-components` comment. On a stale-chunk import error after a deploy, it reloads the page once, using a `sessionStorage` flag to avoid looping.
 
-**Layout.** The `Layout` in `App.jsx` wraps every route in the shadcn `SidebarProvider`. The sidebar is the mobile nav only (`md:hidden`, toggled from `Navbar`). Desktop nav links live in `Navbar`. Both read from `src/constants/navLinks.js`. `RouteTracker` sends a GA pageview on every pathname change.
+**Routes and errors.** Page routes live under a pathless child route in `App.jsx`. That route's `errorElement` (`RouteError`) renders inside the Layout, so the navbar and footer stay visible.
+
+- The final `path: "*"` route throws a 404 `Response`, which `RouteError` shows as "Page not found".
+- Any other error, such as a failed chunk load, shows as "Something went wrong".
+- The root route has the same `errorElement` as a fallback in case the Layout itself throws.
+
+**Layout.** The `Layout` in `App.jsx` wraps every route in the shadcn `SidebarProvider` and includes `<ScrollRestoration />`, which resets scroll on navigation and restores it on Back. The sidebar is the mobile nav only (`md:hidden`, toggled from `Navbar`). Desktop nav links live in `Navbar`. Both read from `src/constants/navLinks.js`. `RouteTracker` sends a GA pageview on every pathname change.
 
 **Adding or hiding a page** takes three changes:
 
-1. Add the route in `App.jsx`.
+1. Add the route in `App.jsx`, inside the pathless route's `children` and before the `*` catch-all.
 2. Add the link in `constants/navLinks.js`.
 3. Add the URL to `public/sitemap.xml`.
 
@@ -55,9 +61,9 @@ The About page exists but is disabled: it is commented out in both `App.jsx` and
 
 **Content is data-driven.** Site content lives in `src/constants/`, and components only render it:
 
-- `projects.js`: `projects[0]` is automatically the "Featured Work" on Home, and `Projects` shows the first 3 projects with a "Show More" button. `ProjectCard` and `FeaturedWork` fetch each project's preview image at runtime from `siteLink` via `@microlink/mql` screenshots, so `siteLink` must be a live public URL.
+- `projects.js`: `projects[0]` is automatically the "Featured Work" on Home, and `Projects` shows the first 3 projects with a "Show More" button. `ProjectCard` and `FeaturedWork` both use `ProjectImage`. It fetches a Microlink screenshot of `siteLink` at runtime, so `siteLink` must be a live public URL. If the fetch or the image fails, it shows a "Preview unavailable" placeholder.
 - `techStack.js`: grouped tech lists. Entries with an `icon` (SVGs imported from `src/assets/icons/`) also appear in the Home marquee.
-- `resume.js`: personal info, experience, education and languages for the `/resume` page and the footer links.
+- `resume.js`: personal info, summary, experience, skills, education and languages for the `/resume` page and the footer links. Experience bullets are `{ lead, text }` objects. `lead` is the bolded opening phrase, matching the bold lead-ins in `Resume.md`.
 
 **The resume exists in three places, which must be kept in sync by hand:**
 
