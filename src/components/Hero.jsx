@@ -26,26 +26,17 @@ export default function Hero() {
           </Link>
         </Button>
         <Button variant="outline" className="h-10 w-40 rounded-none" asChild>
-          <Link
-            to="/"
+          <a
+            href="#contact"
             onClick={(e) => {
               e.preventDefault();
-              const contact = document.getElementById("contact");
-              if (contact) {
-                contact.scrollIntoView({ behavior: "smooth" });
-              } else {
-                window.location.hash = "#/";
-                setTimeout(() => {
-                  document
-                    .getElementById("contact")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }, 300);
-              }
+              document
+                .getElementById("contact")
+                ?.scrollIntoView({ behavior: "smooth" });
             }}
-            viewTransition
           >
             Contact Me
-          </Link>
+          </a>
         </Button>
       </div>
     </section>

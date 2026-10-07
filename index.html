@@ -3,6 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <script>
+      // Old hash-routed links (/#/resume) load the home page; send them to
+      // the real page (/resume) before anything renders.
+      if (location.hash.startsWith("#/")) {
+        location.replace(location.hash.slice(1));
+      } else if (
+        location.pathname.length > 1 &&
+        location.pathname.endsWith("/")
+      ) {
+        // GitHub Pages may serve /resume as /resume/; use one URL per page
+        history.replaceState(
+          null,
+          "",
+          location.pathname.replace(/\/+$/, "") +
+            location.search +
+            location.hash
+        );
+      }
+    </script>
+    <script>
       // Apply the saved theme (or the system preference) before first paint
       // so dark-mode visitors don't see a flash of the light theme.
       (function () {
