@@ -13,6 +13,7 @@ npm run dev       # Vite dev server on port 3000, bound to all interfaces
 npm run build     # production build to dist/
 npm run preview   # serve the built dist/
 npm run lint      # ESLint (flat config, eslint.config.js)
+npm run resume:pdf   # generate public/docs/Resume.pdf from src/constants/resume.js (needs Chrome, or CHROME_PATH)
 npx prettier --write <paths>   # no npm script; prettier-plugin-tailwindcss sorts classes, including inside cn()/clsx()/cva()
 npx shadcn@latest add <name>   # add a shadcn/ui component (components.json: style radix-vega, JSX, aliases under @/)
 ```
@@ -21,16 +22,18 @@ There is no test suite.
 
 Use Node 24 / npm 11 to match CI. When changing dependencies, use npm 11 (`npx npm@11 install ...` if the local npm is 10). npm 10 fails with ERESOLVE on `@vitejs/plugin-react`'s optional-peer chain: `@rolldown/plugin-babel` → `@babel/plugin-transform-runtime@8` → `@babel/core@8`, which clashes with the Babel 7 used by shadcn and eslint-plugin-react-hooks. npm 11 resolves this chain, and the resulting lockfile works with `npm ci` on both versions.
 
-`npm run lint` and `npx prettier --check .` both pass, and should stay clean. CI does not run either one.
+`npm run lint` and `npx prettier --check .` both pass, and CI fails the build if either one fails. Run both before pushing.
 
-Some files are deliberately excluded:
-
-- ESLint (`globalIgnores` in `eslint.config.js`) and Prettier (`.prettierignore`) skip the shadcn-generated code in `src/components/ui/` and `src/hooks/use-mobile.js`. `shadcn add` regenerates these files, so leave their style as generated.
-- Prettier also skips `public/docs/Resume.md`, so the PDF source stays as authored.
+ESLint (`globalIgnores` in `eslint.config.js`) and Prettier (`.prettierignore`) skip the shadcn-generated code in `src/components/ui/`. `shadcn add` regenerates these files, so leave their style as generated. Files under `scripts/` are linted with Node globals.
 
 ## Deployment
 
-Pushing to `main` triggers `.github/workflows/deploy.yml`. It runs `npm ci && npm run build` on Node 24 and publishes `dist/` to GitHub Pages. `dist/` is gitignored and must never be committed.
+`.github/workflows/deploy.yml` runs on every push to any branch, using Node 24.
+
+- The `build` job runs `npm ci`, lint, `prettier --check`, `npm run resume:pdf` and `npm run build`, then uploads the PDF as the `resume-pdf` artifact.
+- The resume step uses the Google Chrome preinstalled on GitHub's Ubuntu runners.
+- The `deploy` job publishes `dist/` to GitHub Pages and runs only on `main`.
+- `dist/` and `public/docs/Resume.pdf` are gitignored and must never be committed.
 
 The build reads two env vars, which come from repo secrets in CI. Locally, put them in a gitignored `.env.local`:
 
@@ -49,7 +52,17 @@ Every page loads lazily through `src/utils/lazyLoad.js`. That helper expects eac
 - Any other error, such as a failed chunk load, shows as "Something went wrong".
 - The root route has the same `errorElement` as a fallback in case the Layout itself throws.
 
-**Layout.** The `Layout` in `App.jsx` wraps every route in the shadcn `SidebarProvider` and includes `<ScrollRestoration />`, which resets scroll on navigation and restores it on Back. The sidebar is the mobile nav only (`md:hidden`, toggled from `Navbar`). Desktop nav links live in `Navbar`. Both read from `src/constants/navLinks.js`. `RouteTracker` sends a GA pageview on every pathname change.
+**Layout.** The `Layout` in `App.jsx` is a plain flex column: `Navbar`, then `<main>` holding the `Outlet`, then `Footer`. It also includes `<ScrollRestoration />`, which resets scroll on navigation and restores it on Back, and `RouteTracker`, which sends a GA pageview on every pathname change.
+
+- Desktop nav links live in `Navbar`.
+- On mobile, `MobileNav` (a shadcn `Sheet` opened by the menu button, `md:hidden`) holds the links.
+- Both read from `src/constants/navLinks.js` and mark the current page with `aria-current`.
+
+**Dark mode.** `ThemeToggle` in the navbar toggles the `.dark` class on `<html>` and stores `"light"`/`"dark"` in `localStorage["theme"]`.
+
+- An inline script at the top of `index.html` applies the saved theme, or the system preference, before first paint. Keep it there.
+- Colours come from the tokens in `src/index.css`, whose `.dark` block overrides them.
+- Avoid hard-coded colours. Use `currentColor` for inline SVG icons and a `dark:` variant where a fixed colour is needed. The tech-stack logos are monochrome black and use `dark:invert`.
 
 **Adding or hiding a page** takes three changes:
 
@@ -61,17 +74,18 @@ Every page loads lazily through `src/utils/lazyLoad.js`. That helper expects eac
 
 - `projects.js`: `projects[0]` is automatically the "Featured Work" on Home, and `Projects` shows the first 3 projects with a "Show More" button. `ProjectCard` and `FeaturedWork` both use `ProjectImage`. It fetches a Microlink screenshot of `siteLink` at runtime, so `siteLink` must be a live public URL. If the fetch or the image fails, it shows a "Preview unavailable" placeholder.
 - `techStack.js`: grouped tech lists. Entries with an `icon` (SVGs imported from `src/assets/icons/`) also appear in the Home marquee.
-- `resume.js`: personal info, summary, experience, skills, education and languages for the `/resume` page and the footer links. Experience bullets are `{ lead, text }` objects. `lead` is the bolded opening phrase, matching the bold lead-ins in `Resume.md`.
+- `resume.js`: personal info, summary, experience, skills, education and languages for the `/resume` page and the footer links. Experience bullets are `{ lead, text }` objects, where `lead` is rendered bold.
 
-**The resume exists in three places, which must be kept in sync by hand:**
+**Resume PDF.** `resume.js` is the single source for both the `/resume` page and `Resume.pdf`.
 
-- `src/constants/resume.js`: the web resume page.
-- `public/docs/Resume.md`: the source for the PDF, styled by `public/docs/resume.css` for markdown-pdf.
-- `public/docs/Resume.pdf`: the file the navbar's "Download CV" button serves.
+- `scripts/resume/build-pdf.js` imports it, renders HTML styled by `scripts/resume/resume.css`, and prints `public/docs/Resume.pdf` (A4, one page) through `playwright-core`.
+- It uses an installed Chrome via `channel: "chrome"`, or the binary in `CHROME_PATH`.
+- It embeds Hanken Grotesk from `@fontsource-variable/hanken-grotesk`, so the output doesn't depend on system fonts.
+- The PDF is gitignored and generated in CI. The navbar's "Download CV" serves `/docs/Resume.pdf`.
+- `personalInfo.title`, `phone` and `location` only appear in the PDF header.
+- After editing `resume.js`, regenerate the PDF and check it still fits on one page.
 
-Editing one doesn't update the others. You can't regenerate the PDF in this repo, so flag it to the user when `Resume.md` changes.
-
-**Analytics.** Use `trackEvent(category, action, label)` from `@/lib/analytics` for outbound links and downloads. The existing calls use the categories `"Outbound"` and `"Resume"`.
+**Analytics.** Use `trackEvent(category, action, label)` from `@/lib/analytics` for outbound links and downloads. The existing calls use the categories `"Outbound"`, `"Resume"` and `"Project"` (`view_site`/`view_source`, labelled with the project name). react-ga4 capitalises the action, so GA4 shows event names like `View_site`.
 
 Page views are sent only by `RouteTracker`, including the first one. `initGA` passes `send_page_view: false` so gtag's `config` call doesn't send its own automatic page view. Keep that option, or the landing page is counted twice.
 
@@ -79,6 +93,9 @@ Page views are sent only by `RouteTracker`, including the first one. `initGA` pa
 
 - Use the `@/` import alias, which maps to `src/` (set in `vite.config.js` and `jsconfig.json`).
 - Merge class names with `cn()` from `@/lib/utils`.
-- Theme tokens (colors, `font-display` = Libre Caslon Text, `font-sans`/`font-mono` = Hanken Grotesk, `animate-marquee`) are defined in `src/index.css` under `@theme inline`. There is no `tailwind.config.js`.
+- Theme tokens are defined in `src/index.css` under `@theme inline`. There is no `tailwind.config.js`. The tokens include:
+  - colours;
+  - `font-display` = Libre Caslon Text and `font-sans`/`font-mono` = Hanken Grotesk Variable, both self-hosted via `@fontsource` imports at the top of `index.css`;
+  - `animate-marquee`.
 - The visual style uses square corners: buttons and inputs usually override with `rounded-none`.
 - Prettier settings: double quotes, semicolons, 2-space indentation, `trailingComma: "es5"`, 80-column lines.
