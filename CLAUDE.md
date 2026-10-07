@@ -14,6 +14,7 @@ npm run build     # production build to dist/
 npm run preview   # serve the built dist/
 npm run lint      # ESLint (flat config, eslint.config.js)
 npm run resume:pdf   # generate public/docs/Resume.pdf from src/constants/resume.js (needs Chrome, or CHROME_PATH)
+npm run prerender    # after build: render each page in dist/ to static HTML and write dist/sitemap.xml (needs Chrome)
 npx prettier --write <paths>   # no npm script; prettier-plugin-tailwindcss sorts classes, including inside cn()/clsx()/cva()
 npx shadcn@latest add <name>   # add a shadcn/ui component (components.json: style radix-vega, JSX, aliases under @/)
 ```
@@ -30,8 +31,8 @@ ESLint (`globalIgnores` in `eslint.config.js`) and Prettier (`.prettierignore`) 
 
 `.github/workflows/deploy.yml` runs on every push to any branch, using Node 24.
 
-- The `build` job runs `npm ci`, lint, `prettier --check`, `npm run resume:pdf` and `npm run build`, then uploads the PDF as the `resume-pdf` artifact.
-- The resume step uses the Google Chrome preinstalled on GitHub's Ubuntu runners.
+- The `build` job runs `npm ci`, lint, `prettier --check`, `npm run resume:pdf`, `npm run build` and `npm run prerender`, then uploads the PDF as the `resume-pdf` artifact.
+- The resume and prerender steps use the Google Chrome preinstalled on GitHub's Ubuntu runners, launched through `scripts/lib/chrome.js`.
 - The `deploy` job publishes `dist/` to GitHub Pages and runs only on `main`.
 - `dist/` and `public/docs/Resume.pdf` are gitignored and must never be committed.
 
@@ -42,17 +43,31 @@ The build reads two env vars, which come from repo secrets in CI. Locally, put t
 
 ## Architecture
 
-**Routing.** `src/App.jsx` uses `createHashRouter`, which suits GitHub Pages because it has no SPA fallback. Real URLs therefore look like `/#/projects`. `public/sitemap.xml` uses the same hash URLs and must be updated by hand when routes change.
+**Routing.** `src/router.jsx` uses `createBrowserRouter`, so pages have normal URLs (`/projects`, `/resume`). GitHub Pages is a static host, so four pieces make this work:
+
+- **Prerendering.** `scripts/prerender.js` runs after `vite build`. It serves `dist/` locally, loads each path listed in `src/constants/pageMeta.js` in headless Chrome, and saves the rendered DOM as `dist/<page>.html` and `dist/<page>/index.html`. This works whether GitHub serves `/projects` from `projects.html` or redirects it to `/projects/`. It also writes `dist/sitemap.xml`; there is no hand-written sitemap.
+  - During the snapshot, analytics is blocked and its script tags are stripped. Microlink requests are left pending, so project previews are captured in their loading state.
+- **404 fallback.** The `spaFallback` plugin in `vite.config.js` copies the app shell to `dist/404.html`. GitHub Pages serves it for unknown paths, and the app renders `RouteError` with a real 404 status.
+- **No flash on load.** `src/main.jsx` waits until the router has loaded the current page's lazy route before calling `createRoot().render()`. React's first commit therefore replaces the prerendered markup with identical content. Don't render before `router.state.initialized`.
+- **URL clean-up.** An inline script at the top of `index.html` sends old hash links (`/#/resume`) to `/resume` with `location.replace`. It also strips a trailing slash with `replaceState` before the router starts.
+
+`DocumentMeta` (in `Layout`) sets the title, description, canonical URL and OG/Twitter tags from `pageMeta.js` on every navigation, by updating the existing tags in `index.html`. Unknown paths get `notFoundMeta` and `<meta name="robots" content="noindex">`.
+
+Paths owned by other GitHub Pages project sites, such as `/endless-runner-phaser/`, are served by those repos. Never create a page with a repo's name.
 
 Every page loads lazily through `src/utils/lazyLoad.js`. That helper expects each page module to export a default component plus a named `loader`, which is why each page carries an `eslint-disable-next-line react-refresh/only-export-components` comment. On a stale-chunk import error after a deploy, it reloads the page once, using a `sessionStorage` flag to avoid looping.
 
-**Routes and errors.** Page routes live under a pathless child route in `App.jsx`. That route's `errorElement` (`RouteError`) renders inside the Layout, so the navbar and footer stay visible.
+**Routes and errors.** Page routes live under a pathless child route in `src/router.jsx`. That route's `errorElement` (`RouteError`) renders inside the Layout, so the navbar and footer stay visible.
 
 - The final `path: "*"` route throws a 404 `Response`, which `RouteError` shows as "Page not found".
 - Any other error, such as a failed chunk load, shows as "Something went wrong".
 - The root route has the same `errorElement` as a fallback in case the Layout itself throws.
 
-**Layout.** The `Layout` in `App.jsx` is a plain flex column: `Navbar`, then `<main>` holding the `Outlet`, then `Footer`. It also includes `<ScrollRestoration />`, which resets scroll on navigation and restores it on Back, and `RouteTracker`, which sends a GA pageview on every pathname change.
+**Layout.** `src/components/Layout.jsx` is a plain flex column: `Navbar`, then `<main>` holding the `Outlet`, then `Footer`. It also includes:
+
+- `<ScrollRestoration />`, which resets scroll on navigation and restores it on Back;
+- `DocumentMeta`, described under Routing;
+- `RouteTracker`, which sends a GA pageview on every pathname change.
 
 - Desktop nav links live in `Navbar`.
 - On mobile, `MobileNav` (a shadcn `Sheet` opened by the menu button, `md:hidden`) holds the links.
@@ -66,9 +81,9 @@ Every page loads lazily through `src/utils/lazyLoad.js`. That helper expects eac
 
 **Adding or hiding a page** takes three changes:
 
-1. Add the route in `App.jsx`, inside the pathless route's `children` and before the `*` catch-all.
-2. Add the link in `constants/navLinks.js`.
-3. Add the URL to `public/sitemap.xml`.
+1. Add the route in `src/router.jsx`, inside the pathless route's `children` and before the `*` catch-all.
+2. Add an entry to `src/constants/pageMeta.js`. That gives the page its title and description, and adds it to the prerender step and the sitemap. The page must render a `<main>`-level `<h1>`, because the prerender script waits for one.
+3. Add the link in `constants/navLinks.js`.
 
 **Content is data-driven.** Site content lives in `src/constants/`, and components only render it:
 
