@@ -136,10 +136,13 @@ export default function TechStack() {
           </div>
         </div>
       </div>
-      <div className="pointer-events-none relative mt-8 overflow-hidden select-none md:mt-0">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none relative mt-8 overflow-hidden select-none md:mt-0"
+      >
         <div className="from-background pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-linear-to-r to-transparent" />
         <div className="from-background pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-linear-to-l to-transparent" />
-        <div className="animate-marquee flex w-max">
+        <div className="animate-marquee flex w-max motion-reduce:animate-none">
           {duplicated.map((tech, index) => (
             <div
               key={index}
