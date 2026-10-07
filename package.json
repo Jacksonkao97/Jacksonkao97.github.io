@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "resume:pdf": "node scripts/resume/build-pdf.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },
