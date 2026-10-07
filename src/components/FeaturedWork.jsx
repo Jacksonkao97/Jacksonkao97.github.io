@@ -1,37 +1,8 @@
 import { projects } from "@/constants/projects";
-import mql from "@microlink/mql";
 import { MoveRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import ProjectImage from "./ProjectImage";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-
-function ProjectImage({ link, name }) {
-  const [screenshot, setScreenshot] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchScreenshot = async () => {
-      try {
-        const { data } = await mql(link, { screenshot: true });
-        setScreenshot(data.screenshot.url);
-      } catch (error) {
-        console.error("Failed to fetch screenshot:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchScreenshot();
-  }, [link]);
-
-  if (loading) {
-    return <div className="bg-muted h-full w-full animate-pulse" />;
-  }
-
-  return (
-    <img src={screenshot} alt={name} className="h-full w-full object-cover" />
-  );
-}
 
 export default function FeaturedWork() {
   const featured = projects[0];
