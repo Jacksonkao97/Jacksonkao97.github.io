@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
-import mql from "@microlink/mql";
 import { MoveRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import ProjectImage from "./ProjectImage";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
@@ -10,38 +9,6 @@ const isInverted = (index, enable) => {
   if (!enable) return false;
   return index % 2 === 0;
 };
-
-function ProjectImage({ link, name }) {
-  const [screenshot, setScreenshot] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchScreenshot = async () => {
-      try {
-        const { data } = await mql(link, { screenshot: true });
-        setScreenshot(data.screenshot.url);
-      } catch (error) {
-        console.error("Failed to fetch screenshot:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchScreenshot();
-  }, [link]);
-
-  if (loading) {
-    return <div className="bg-muted h-full w-full animate-pulse" />;
-  }
-
-  return (
-    <img
-      src={screenshot}
-      alt={name}
-      className="border-muted-foreground/50 h-full w-full scale-95 border object-cover duration-200 group-hover:scale-100"
-    />
-  );
-}
 
 export default function ProjectCard({ index, project }) {
   return (
@@ -52,7 +19,11 @@ export default function ProjectCard({ index, project }) {
       )}
     >
       <div className="border-foreground aspect-square w-full border md:w-[40%]">
-        <ProjectImage link={project.siteLink} name={project.name} />
+        <ProjectImage
+          link={project.siteLink}
+          name={project.name}
+          className="border-muted-foreground/50 scale-95 border duration-200 group-hover:scale-100"
+        />
       </div>
       <div className="flex h-fit flex-row">
         <Separator
