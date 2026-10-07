@@ -2,27 +2,18 @@ import { Button } from "@/components/ui/button";
 import { navLinks } from "@/constants/navLinks";
 import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
-import { Download, MenuIcon } from "lucide-react";
+import { Download } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import { useSidebar } from "./ui/sidebar";
+import MobileNav from "./MobileNav";
 
 export default function Navbar() {
   const { pathname: currentPath } = useLocation();
-  const { toggleSidebar } = useSidebar();
 
   return (
     <header className="border-border/40 bg-background/80 sticky top-0 z-50 w-full border-b backdrop-blur-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-2 sm:px-0">
         <div className="flex items-center gap-2">
-          <Button
-            size="icon"
-            variant="ghost"
-            className="md:hidden"
-            aria-label="Open menu"
-            onClick={toggleSidebar}
-          >
-            <MenuIcon />
-          </Button>
+          <MobileNav />
 
           <Link
             to="/"
@@ -37,6 +28,7 @@ export default function Navbar() {
             <Link
               key={to}
               to={to}
+              aria-current={currentPath === to ? "page" : undefined}
               className={cn(
                 "hover:text-foreground relative rounded-md px-4 py-2 text-sm transition-colors",
                 "after:bg-foreground after:absolute after:bottom-1 after:left-1/2 after:h-0.5 after:w-0 after:-translate-x-1/2 after:rounded-full after:transition-all after:duration-300 hover:after:w-[calc(100%-2rem)]",
