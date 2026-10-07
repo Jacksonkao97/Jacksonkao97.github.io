@@ -42,9 +42,9 @@ export default function ProjectCard({ index, project }) {
               </Badge>
             ))}
           </span>
-          <h3 className="font-display text-foreground text-base font-medium md:text-2xl">
+          <h2 className="font-display text-foreground text-base font-medium md:text-2xl">
             {project.name}
-          </h3>
+          </h2>
           <p className="text-muted-foreground font-mono text-sm md:text-base">
             {project.description}
           </p>

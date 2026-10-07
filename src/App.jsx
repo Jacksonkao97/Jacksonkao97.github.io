@@ -56,6 +56,8 @@ const router = createHashRouter([
           // },
           {
             path: "*",
+            // Rendered by RouteError; null avoids React Router's empty-leaf warning
+            element: null,
             loader: () => {
               throw new Response("Not Found", { status: 404 });
             },

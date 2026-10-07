@@ -7,8 +7,9 @@ const lazyLoad = async (importFn, pageName) => {
 
     const isChunkError =
       error.name === "ChunkLoadError" ||
-      error.message?.includes("Failed to fetch") ||
-      error.message?.includes("Importing a module script failed");
+      error.message?.includes("Failed to fetch") || // Chrome
+      error.message?.includes("error loading dynamically imported module") || // Firefox
+      error.message?.includes("Importing a module script failed"); // Safari
 
     if (isChunkError) {
       const reloadKey = `reload-${pageName}`;

@@ -75,6 +75,8 @@ Editing one doesn't update the others. You can't regenerate the PDF in this repo
 
 **Analytics.** Use `trackEvent(category, action, label)` from `@/lib/analytics` for outbound links and downloads. The existing calls use the categories `"Outbound"` and `"Resume"`.
 
+Page views are sent only by `RouteTracker`, including the first one. `initGA` passes `send_page_view: false` so gtag's `config` call doesn't send its own automatic page view. Keep that option, or the landing page is counted twice.
+
 ## Conventions
 
 - Use the `@/` import alias, which maps to `src/` (set in `vite.config.js` and `jsconfig.json`).

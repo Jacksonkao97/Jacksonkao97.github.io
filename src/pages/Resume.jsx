@@ -19,9 +19,9 @@ export default function Resume() {
     <div className="container mx-auto w-full px-4 py-8 sm:px-0 md:py-24">
       <div className="mx-auto flex w-full max-w-4xl flex-col">
         <div className="mb-6 flex flex-col space-y-3">
-          <h2 className="font-display text-foreground text-2xl font-medium md:text-5xl">
+          <h1 className="font-display text-foreground text-2xl font-medium md:text-5xl">
             Yee Tsung (Jackson) Kao
-          </h2>
+          </h1>
           <p className="text-muted-foreground max-w-2xl font-mono text-sm md:text-base">
             {summary}
           </p>
@@ -71,9 +71,9 @@ export default function Resume() {
         <Separator className="mb-16" />
 
         <section className="mb-16 space-y-6 md:space-y-10">
-          <h4 className="text-muted-foreground font-mono text-sm font-medium md:text-lg">
+          <h2 className="text-muted-foreground font-mono text-sm font-medium md:text-lg">
             Professional Experience
-          </h4>
+          </h2>
           {experiences.map((data, index) => (
             <div key={index} className="space-y-2">
               <h3 className="font-display text-foreground flex text-lg font-medium md:text-2xl">
@@ -103,9 +103,9 @@ export default function Resume() {
         </section>
 
         <section className="mb-16 space-y-6 md:space-y-10">
-          <h4 className="text-muted-foreground font-mono text-sm font-medium md:text-lg">
+          <h2 className="text-muted-foreground font-mono text-sm font-medium md:text-lg">
             Technical Skills
-          </h4>
+          </h2>
           <ul className="flex list-disc flex-col gap-2 pl-4">
             {skills.map((data) => (
               <li
@@ -122,9 +122,9 @@ export default function Resume() {
         </section>
 
         <section className="mb-16 space-y-6 md:space-y-10">
-          <h4 className="text-muted-foreground font-mono text-sm font-medium md:text-lg">
+          <h2 className="text-muted-foreground font-mono text-sm font-medium md:text-lg">
             Education
-          </h4>
+          </h2>
           {education.map((data, index) => (
             <div key={index} className="space-y-px md:space-y-2">
               <h3 className="font-display text-foreground flex text-sm font-medium md:text-xl">
@@ -141,9 +141,9 @@ export default function Resume() {
         </section>
 
         <section className="mb-16 space-y-6 md:space-y-10">
-          <h4 className="text-muted-foreground font-mono text-sm font-medium md:text-lg">
+          <h2 className="text-muted-foreground font-mono text-sm font-medium md:text-lg">
             Languages
-          </h4>
+          </h2>
           <ul className="flex list-disc flex-col gap-2 pl-4">
             {languages.map((data, index) => (
               <li key={index} className="text-xs md:text-base">

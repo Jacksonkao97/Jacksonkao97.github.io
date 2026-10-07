@@ -5,7 +5,9 @@ const isEnabled = import.meta.env.PROD && Boolean(gaId);
 
 export const initGA = () => {
   if (!isEnabled) return;
-  ReactGA.initialize(gaId);
+  // RouteTracker sends every page view (including the first), so stop the
+  // gtag config call from sending its own automatic one.
+  ReactGA.initialize(gaId, { gtagOptions: { send_page_view: false } });
 };
 
 export const trackPage = (path) => {
