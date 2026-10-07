@@ -28,6 +28,7 @@ export default function Resume() {
           <span className="mt-2 mr-auto flex items-center justify-center gap-2">
             <svg
               role="img"
+              fill="currentColor"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4"

@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Download } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import MobileNav from "./MobileNav";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const { pathname: currentPath } = useLocation();
@@ -42,20 +43,23 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <Button
-          size="sm"
-          className="border-foreground ring-background rounded-none border ring ring-offset-0 ring-inset"
-          asChild
-        >
-          <a
-            href="/docs/Resume.pdf"
-            download
-            onClick={() => trackEvent("Resume", "download", "Navbar")}
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Button
+            size="sm"
+            className="border-foreground ring-background rounded-none border ring ring-offset-0 ring-inset"
+            asChild
           >
-            <Download className="mr-2 h-4 w-4" />
-            Download CV
-          </a>
-        </Button>
+            <a
+              href="/docs/Resume.pdf"
+              download
+              onClick={() => trackEvent("Resume", "download", "Navbar")}
+            >
+              <Download className="mr-2 h-4 w-4" />
+              Download CV
+            </a>
+          </Button>
+        </div>
       </div>
     </header>
   );

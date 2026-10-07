@@ -134,7 +134,7 @@ export default function Contact() {
               role="status"
               className={
                 state.success
-                  ? "text-sm text-green-500"
+                  ? "text-sm text-green-700 dark:text-green-400"
                   : "text-destructive text-sm"
               }
             >

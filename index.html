@@ -2,6 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Apply the saved theme (or the system preference) before first paint
+      // so dark-mode visitors don't see a flash of the light theme.
+      (function () {
+        let theme = null;
+        try {
+          theme = localStorage.getItem("theme");
+        } catch {
+          // Storage unavailable: fall back to the system preference
+        }
+        const prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
+        if (theme === "dark" || (theme !== "light" && prefersDark)) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
     <meta
       name="google-site-verification"
       content="G3PolOwohgzX5GwCV95TAIRA7jUePPtkfGmB-d-0ooI"
