@@ -24,7 +24,7 @@ export default function Sidebar() {
               onClick={() => setOpenMobile(false)}
               className="font-display mt-4 ml-2 text-xl"
             >
-              jacksonkao.dev
+              Jackson Kao
             </Link>
             <Separator />
             {navLinks.map(({ label, to }, index) => (

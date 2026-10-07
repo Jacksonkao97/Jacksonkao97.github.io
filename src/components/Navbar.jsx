@@ -28,7 +28,7 @@ export default function Navbar() {
             to="/"
             className="font-display text-lg leading-tight tracking-tight"
           >
-            jacksonkao.dev
+            Jackson Kao
           </Link>
         </div>
 

@@ -1,4 +1,4 @@
-# jacksonkao.dev
+# Jackson Kao — Portfolio
 
 My personal portfolio site, with a home page, a projects showcase, and an online resume.
 

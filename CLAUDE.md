@@ -57,8 +57,6 @@ Every page loads lazily through `src/utils/lazyLoad.js`. That helper expects eac
 2. Add the link in `constants/navLinks.js`.
 3. Add the URL to `public/sitemap.xml`.
 
-The About page exists but is disabled: it is commented out in both `App.jsx` and `navLinks.js`.
-
 **Content is data-driven.** Site content lives in `src/constants/`, and components only render it:
 
 - `projects.js`: `projects[0]` is automatically the "Featured Work" on Home, and `Projects` shows the first 3 projects with a "Show More" button. `ProjectCard` and `FeaturedWork` both use `ProjectImage`. It fetches a Microlink screenshot of `siteLink` at runtime, so `siteLink` must be a live public URL. If the fetch or the image fails, it shows a "Preview unavailable" placeholder.
