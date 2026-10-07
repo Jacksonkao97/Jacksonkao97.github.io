@@ -18,6 +18,7 @@ export default function Navbar() {
             size="icon"
             variant="ghost"
             className="md:hidden"
+            aria-label="Open menu"
             onClick={toggleSidebar}
           >
             <MenuIcon />

@@ -15,6 +15,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackEvent("Outbound", "click", "GitHub")}
+            aria-label="GitHub"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             <svg viewBox="0 0 128 128" className="h-8 w-8">
@@ -33,6 +34,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackEvent("Outbound", "click", "LinkedIn")}
+            aria-label="LinkedIn"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             <svg viewBox="0 0 128 128" className="h-8 w-8">
