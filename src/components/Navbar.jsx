@@ -2,33 +2,25 @@ import { Button } from "@/components/ui/button";
 import { navLinks } from "@/constants/navLinks";
 import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
-import { Download, MenuIcon } from "lucide-react";
+import { Download } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import { useSidebar } from "./ui/sidebar";
+import MobileNav from "./MobileNav";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const { pathname: currentPath } = useLocation();
-  const { toggleSidebar } = useSidebar();
 
   return (
     <header className="border-border/40 bg-background/80 sticky top-0 z-50 w-full border-b backdrop-blur-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-2 sm:px-0">
         <div className="flex items-center gap-2">
-          <Button
-            size="icon"
-            variant="ghost"
-            className="md:hidden"
-            aria-label="Open menu"
-            onClick={toggleSidebar}
-          >
-            <MenuIcon />
-          </Button>
+          <MobileNav />
 
           <Link
             to="/"
             className="font-display text-lg leading-tight tracking-tight"
           >
-            jacksonkao.dev
+            Jackson Kao
           </Link>
         </div>
 
@@ -37,6 +29,7 @@ export default function Navbar() {
             <Link
               key={to}
               to={to}
+              aria-current={currentPath === to ? "page" : undefined}
               className={cn(
                 "hover:text-foreground relative rounded-md px-4 py-2 text-sm transition-colors",
                 "after:bg-foreground after:absolute after:bottom-1 after:left-1/2 after:h-0.5 after:w-0 after:-translate-x-1/2 after:rounded-full after:transition-all after:duration-300 hover:after:w-[calc(100%-2rem)]",
@@ -50,20 +43,23 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <Button
-          size="sm"
-          className="border-foreground ring-background rounded-none border ring ring-offset-0 ring-inset"
-          asChild
-        >
-          <a
-            href="/docs/Resume.pdf"
-            download
-            onClick={() => trackEvent("Resume", "download", "Navbar")}
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Button
+            size="sm"
+            className="border-foreground ring-background rounded-none border ring ring-offset-0 ring-inset"
+            asChild
           >
-            <Download className="mr-2 h-4 w-4" />
-            Download CV
-          </a>
-        </Button>
+            <a
+              href="/docs/Resume.pdf"
+              download
+              onClick={() => trackEvent("Resume", "download", "Navbar")}
+            >
+              <Download className="mr-2 h-4 w-4" />
+              Download CV
+            </a>
+          </Button>
+        </div>
       </div>
     </header>
   );

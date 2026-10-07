@@ -9,22 +9,19 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import RouteError from "./components/RouteError";
 import RouteTracker from "./components/RouteTracker";
-import Sidebar from "./components/Sidebar";
-import { SidebarInset, SidebarProvider } from "./components/ui/sidebar";
 import lazyLoad from "./utils/lazyLoad";
 
 const Layout = () => {
   return (
-    <SidebarProvider defaultOpen={false} className="flex-1 flex-col">
+    <div className="flex min-h-svh w-full flex-col">
       <ScrollRestoration />
       <RouteTracker />
-      <Sidebar />
       <Navbar />
-      <SidebarInset className="m-0! rounded-none! shadow-none!">
+      <main className="bg-background relative flex w-full flex-1 flex-col">
         <Outlet />
-      </SidebarInset>
+      </main>
       <Footer />
-    </SidebarProvider>
+    </div>
   );
 };
 
@@ -50,10 +47,6 @@ const router = createHashRouter([
             path: "resume",
             lazy: () => lazyLoad(() => import("@/pages/Resume"), "Resume"),
           },
-          // {
-          //   path: "about",
-          //   lazy: () => lazyLoad(() => import("@/pages/About"), "About"),
-          // },
           {
             path: "*",
             // Rendered by RouteError; null avoids React Router's empty-leaf warning

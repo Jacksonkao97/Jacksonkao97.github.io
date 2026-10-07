@@ -1,6 +1,6 @@
-# jacksonkao.dev
+# Jackson Kao — Portfolio
 
-My personal portfolio site, with a home page, a projects showcase, and an online resume.
+My personal portfolio site, with a home page, a projects showcase, an online resume with a downloadable PDF, and a light/dark theme.
 
 **Live site:** https://jacksonkao97.github.io
 
@@ -9,10 +9,12 @@ My personal portfolio site, with a home page, a projects showcase, and an online
 - [React 19](https://react.dev/) + [Vite](https://vite.dev/)
 - [Tailwind CSS v4](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/) (Radix primitives, Lucide icons)
 - [React Router](https://reactrouter.com/) (hash routing, so it works on GitHub Pages)
+- Self-hosted fonts via [Fontsource](https://fontsource.org/) (Hanken Grotesk, Libre Caslon Text)
 - [Microlink](https://microlink.io/) for live project screenshots
 - [Web3Forms](https://web3forms.com/) for the contact form
 - Google Analytics 4 via [react-ga4](https://github.com/codler/react-ga4)
-- Deployed to GitHub Pages with GitHub Actions
+- Resume PDF generated from the same data as the web resume, using headless Chrome via [playwright-core](https://playwright.dev/)
+- Built, checked and deployed to GitHub Pages with GitHub Actions
 
 ## Getting started
 
@@ -43,6 +45,9 @@ Both are optional locally. Without `VITE_WEB3FORMS_KEY` the contact form can't s
 | `npm run preview`        | Serve the production build locally   |
 | `npm run lint`           | Run ESLint                           |
 | `npx prettier --write .` | Format code (sorts Tailwind classes) |
+| `npm run resume:pdf`     | Generate `public/docs/Resume.pdf`    |
+
+`npm run resume:pdf` needs Google Chrome installed. To use a different Chrome or Chromium binary, set `CHROME_PATH`. The PDF is generated rather than committed, so run this once if you want the "Download CV" button to work under `npm run dev`.
 
 ## Project structure
 
@@ -54,8 +59,10 @@ src/
 ├── constants/    Site content: projects, tech stack, resume, nav links
 ├── lib/          analytics helpers and the cn() class-name utility
 └── utils/        lazyLoad (route loading with chunk-error recovery)
+scripts/
+└── resume/       build-pdf.js and resume.css: render resume.js to Resume.pdf
 public/
-├── docs/         Resume.md (source), resume.css (PDF styling), Resume.pdf
+├── docs/         Resume.pdf (generated, gitignored)
 └── sitemap.xml
 ```
 
@@ -65,10 +72,9 @@ Most of the site's content lives in `src/constants/`:
 
 - **Projects:** add an entry to `projects.js`. The first project is featured on the home page. `siteLink` must be a live public URL, because the preview image is a Microlink screenshot of it.
 - **Tech stack:** edit `techStack.js`. Entries with an `icon` also appear in the scrolling logo strip.
-- **Resume:** the resume exists in three places, and they must be updated together:
-  1. `src/constants/resume.js` for the `/resume` page
-  2. `public/docs/Resume.md`, the source for the PDF, styled with `public/docs/resume.css`
-  3. `public/docs/Resume.pdf`, served by the "Download CV" button
+- **Resume:** edit `resume.js`, the single source for both the `/resume` page and the PDF.
+  - On deploy, CI generates the PDF served by the "Download CV" button, so never edit the PDF by hand.
+  - To preview it, run `npm run resume:pdf`, or download the `resume-pdf` artifact from any workflow run.
 - **New page:**
   1. Add a route in `src/App.jsx`.
   2. Add a link in `src/constants/navLinks.js`.
@@ -76,7 +82,14 @@ Most of the site's content lives in `src/constants/`:
 
 ## Deployment
 
-Every push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds the site and publishes `dist/` to GitHub Pages. `VITE_WEB3FORMS_KEY` and `VITE_GA_ID` are read from the repository's Actions secrets.
+Every push, to any branch, runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). It:
+
+1. Lints and checks formatting.
+2. Generates the resume PDF and builds the site.
+3. Attaches the PDF to the run as the `resume-pdf` artifact.
+4. On `main` only, publishes `dist/` to GitHub Pages.
+
+`VITE_WEB3FORMS_KEY` and `VITE_GA_ID` are read from the repository's Actions secrets.
 
 ## License
 

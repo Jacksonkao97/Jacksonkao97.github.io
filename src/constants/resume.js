@@ -1,8 +1,11 @@
+// Single source for the /resume page and the generated Resume.pdf
+// (scripts/resume/build-pdf.js). Edit here; never edit the PDF by hand.
 export const personalInfo = {
   name: "Yee Tsung (Jackson) Kao",
-  title: "Full-Stack Software Engineer",
-  email: "Jacksonkao97@gmail.com",
-  phone: "+60 11-6141 6637",
+  title: "Full Stack Developer",
+  email: "jacksonkao97@gmail.com",
+  phone: "+6011-6141-6637",
+  location: "Kuala Lumpur, Malaysia",
   github: "https://github.com/jacksonkao97",
   linkedin: "https://www.linkedin.com/in/jackson-kao-654bab1b4",
 };

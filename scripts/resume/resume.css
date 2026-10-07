@@ -1,0 +1,117 @@
+/* ==========================================
+   Resume PDF styles (used by build-pdf.js)
+   ========================================== */
+
+/* Base */
+body {
+  font-family:
+    "Hanken Grotesk", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  line-height: 1.55;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+/* Header */
+h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin: 0 0 2px 0;
+  color: #0f0f0f;
+}
+
+.title {
+  font-size: 12.5px;
+  font-weight: 600;
+  margin: 0 0 2px 0;
+  color: #333;
+}
+
+.contact {
+  font-size: 10.5px;
+  color: #444;
+  margin: 0;
+}
+
+/* Section headings */
+h2 {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #2563eb;
+  margin: 16px 0 6px 0;
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid #2563eb;
+}
+
+/* Work experience and education entries */
+.entry {
+  break-inside: avoid;
+  margin-bottom: 8px;
+}
+
+.entry-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+h3 {
+  font-size: 12px;
+  font-weight: 700;
+  margin: 8px 0 0 0;
+  color: #0f0f0f;
+}
+
+.period {
+  font-size: 10.5px;
+  color: #555;
+  white-space: nowrap;
+}
+
+.org {
+  margin: 0 0 2px 0;
+  color: #333;
+}
+
+.languages {
+  margin-top: 8px;
+}
+
+/* Paragraphs */
+p {
+  margin: 2px 0 6px 0;
+  color: #333;
+}
+
+strong {
+  color: #0f0f0f;
+  font-weight: 600;
+}
+
+/* Lists */
+ul {
+  margin: 4px 0 6px 0;
+  padding-left: 18px;
+}
+
+li {
+  margin-bottom: 3px;
+  color: #333;
+}
+
+/* Links */
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+/* Keep headings with the content that follows */
+h2,
+h3,
+.entry-head {
+  break-after: avoid;
+}

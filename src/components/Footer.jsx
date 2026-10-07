@@ -18,8 +18,8 @@ export default function Footer() {
             aria-label="GitHub"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
-            <svg viewBox="0 0 128 128" className="h-8 w-8">
-              <g fill="#181616">
+            <svg viewBox="0 0 128 128" className="text-foreground h-8 w-8">
+              <g fill="currentColor">
                 <path
                   fillRule="evenodd"
                   clipRule="evenodd"

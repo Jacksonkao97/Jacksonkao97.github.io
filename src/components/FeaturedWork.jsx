@@ -1,4 +1,5 @@
 import { projects } from "@/constants/projects";
+import { trackEvent } from "@/lib/analytics";
 import { MoveRight } from "lucide-react";
 import ProjectImage from "./ProjectImage";
 import { Badge } from "./ui/badge";
@@ -41,6 +42,9 @@ export default function FeaturedWork() {
               >
                 <a
                   href={projects[0].siteLink}
+                  onClick={() =>
+                    trackEvent("Project", "view_site", projects[0].name)
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -55,6 +59,9 @@ export default function FeaturedWork() {
               >
                 <a
                   href={projects[0].githubLink}
+                  onClick={() =>
+                    trackEvent("Project", "view_source", projects[0].name)
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                 >

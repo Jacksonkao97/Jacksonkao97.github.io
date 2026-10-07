@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap");
+@import "@fontsource-variable/hanken-grotesk";
+@import "@fontsource/libre-caslon-text/400.css";
+@import "@fontsource/libre-caslon-text/700.css";
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -8,8 +10,8 @@
 @theme inline {
   --font-heading: var(--font-sans);
   --font-display: "Libre Caslon Text", serif;
-  --font-sans: "Hanken Grotesk", sans-serif;
-  --font-mono: "Hanken Grotesk", monospace;
+  --font-sans: "Hanken Grotesk Variable", sans-serif;
+  --font-mono: "Hanken Grotesk Variable", monospace;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -97,6 +99,7 @@
 }
 
 .dark {
+  color-scheme: dark;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);

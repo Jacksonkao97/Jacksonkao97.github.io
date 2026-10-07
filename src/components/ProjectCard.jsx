@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/analytics";
 import { MoveRight } from "lucide-react";
 import ProjectImage from "./ProjectImage";
 import { Badge } from "./ui/badge";
@@ -56,6 +57,7 @@ export default function ProjectCard({ index, project }) {
             >
               <a
                 href={project.siteLink}
+                onClick={() => trackEvent("Project", "view_site", project.name)}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -66,6 +68,9 @@ export default function ProjectCard({ index, project }) {
             <Button variant="link" className="mt-4 w-max rounded-none" asChild>
               <a
                 href={project.githubLink}
+                onClick={() =>
+                  trackEvent("Project", "view_source", project.name)
+                }
                 target="_blank"
                 rel="noopener noreferrer"
               >

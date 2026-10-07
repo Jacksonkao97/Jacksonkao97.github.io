@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Generated from src/constants/resume.js by `npm run resume:pdf`
+public/docs/Resume.pdf
