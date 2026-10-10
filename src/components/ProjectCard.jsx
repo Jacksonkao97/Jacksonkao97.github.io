@@ -21,7 +21,7 @@ export default function ProjectCard({ index, project }) {
     >
       <div className="border-foreground aspect-square w-full border md:w-[40%]">
         <ProjectImage
-          link={project.siteLink}
+          link={project.previewLink ?? project.siteLink}
           name={project.name}
           className="border-muted-foreground/50 scale-95 border duration-200 group-hover:scale-100"
         />
@@ -32,7 +32,7 @@ export default function ProjectCard({ index, project }) {
           className="border-muted-foreground hidden md:mr-4 md:block"
         />
         <div className="space-y-2 py-0 md:py-2">
-          <span className="flex gap-2">
+          <span className="flex flex-wrap gap-2">
             {project.technologies.map((tech) => (
               <Badge
                 variant="outline"

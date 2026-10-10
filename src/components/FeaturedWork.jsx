@@ -17,7 +17,7 @@ export default function FeaturedWork() {
       {featured ? (
         <div className="bg-muted/50 flex flex-col-reverse gap-8 border p-4 shadow-2xs sm:flex-row md:p-10">
           <div className="flex flex-1 flex-col space-y-4">
-            <span className="flex gap-2">
+            <span className="flex flex-wrap gap-2">
               {projects[0].technologies.map((tech) => (
                 <Badge
                   variant="outline"
@@ -72,7 +72,10 @@ export default function FeaturedWork() {
             </div>
           </div>
           <div className="flex w-full items-center justify-center border sm:w-[40%]">
-            <ProjectImage link={projects[0].siteLink} name={projects[0].name} />
+            <ProjectImage
+              link={projects[0].previewLink ?? projects[0].siteLink}
+              name={projects[0].name}
+            />
           </div>
         </div>
       ) : (

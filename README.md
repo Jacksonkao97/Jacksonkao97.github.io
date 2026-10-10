@@ -72,7 +72,7 @@ public/
 
 Most of the site's content lives in `src/constants/`:
 
-- **Projects:** add an entry to `projects.js`. The first project is featured on the home page. `siteLink` must be a live public URL, because the preview image is a Microlink screenshot of it.
+- **Projects:** add an entry to `projects.js`. The first project is featured on the home page. `siteLink` must be a live public URL, because the preview image is a Microlink screenshot of it. If the front page looks empty to a new visitor, set `previewLink` to a better page to screenshot.
 - **Tech stack:** edit `techStack.js`. Entries with an `icon` also appear in the scrolling logo strip.
 - **Resume:** edit `resume.js`, the single source for both the `/resume` page and the PDF.
   - On deploy, CI generates the PDF served by the "Download CV" button, so never edit the PDF by hand.

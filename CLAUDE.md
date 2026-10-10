@@ -87,7 +87,7 @@ Every page loads lazily through `src/utils/lazyLoad.js`. That helper expects eac
 
 **Content is data-driven.** Site content lives in `src/constants/`, and components only render it:
 
-- `projects.js`: `projects[0]` is automatically the "Featured Work" on Home, and `Projects` shows the first 3 projects with a "Show More" button. `ProjectCard` and `FeaturedWork` both use `ProjectImage`. It fetches a Microlink screenshot of `siteLink` at runtime, so `siteLink` must be a live public URL. If the fetch or the image fails, it shows a "Preview unavailable" placeholder.
+- `projects.js`: `projects[0]` is automatically the "Featured Work" on Home, and `Projects` shows the first 3 projects with a "Show More" button. `ProjectCard` and `FeaturedWork` both use `ProjectImage`. It fetches a Microlink screenshot of `siteLink` at runtime, so `siteLink` must be a live public URL. An optional `previewLink` is screenshotted instead, for a site whose front page looks empty to a new visitor (MediaLog's library starts empty, so it previews a 发现 page). "View Site" always opens `siteLink`. If the fetch or the image fails, it shows a "Preview unavailable" placeholder.
 - `techStack.js`: grouped tech lists. Entries with an `icon` (SVGs imported from `src/assets/icons/`) also appear in the Home marquee.
 - `resume.js`: personal info, summary, experience, skills, education and languages for the `/resume` page and the footer links. Experience bullets are `{ lead, text }` objects, where `lead` is rendered bold.
 
