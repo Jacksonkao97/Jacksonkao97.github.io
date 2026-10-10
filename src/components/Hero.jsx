@@ -1,44 +1,49 @@
 import { Link } from "react-router-dom";
+import DotField from "./DotField";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 
 export default function Hero() {
   return (
-    <section className="flex min-h-[calc(100svh-4rem-1px)] flex-col justify-center bg-transparent px-4 sm:px-0">
-      <h1 className="font-display text-foreground text-2xl leading-snug font-normal sm:text-5xl">
-        Hi, I'm Jackson Kao <br /> Full-Stack Software Engineer
-      </h1>
+    <section className="grid min-h-[calc(100svh-4rem-1px)] content-center items-center gap-12 bg-transparent px-4 sm:px-0 xl:grid-cols-[3fr_2fr]">
+      <div className="flex flex-col">
+        <h1 className="font-display text-foreground text-2xl leading-snug font-normal sm:text-5xl">
+          Hi, I'm Jackson Kao <br /> Full-Stack Software Engineer
+        </h1>
 
-      <Separator className="bg-muted-foreground my-4 w-20! sm:my-6 sm:w-30!" />
+        <Separator className="bg-muted-foreground my-4 w-20! sm:my-6 sm:w-30!" />
 
-      <p className="text-muted-foreground max-w-3xl text-sm leading-relaxed sm:text-lg">
-        I’m a Software Engineer specializing in building full-stack web
-        applications. I combine modern frontend frameworks like Next.js and
-        Tailwind CSS with a robust backend foundation in API design and database
-        management—all while occasionally integrating intelligent AI automation
-        to streamline complex workflows.
-      </p>
+        <p className="text-muted-foreground max-w-3xl text-sm leading-relaxed sm:text-lg">
+          I’m a Software Engineer specializing in building full-stack web
+          applications. I combine modern frontend frameworks like Next.js and
+          Tailwind CSS with a robust backend foundation in API design and
+          database management—all while occasionally integrating intelligent AI
+          automation to streamline complex workflows.
+        </p>
 
-      <div className="mt-6 flex gap-4">
-        <Button className="h-10 w-40 rounded-none" asChild>
-          <Link to="/projects" viewTransition>
-            View Projects
-          </Link>
-        </Button>
-        <Button variant="outline" className="h-10 w-40 rounded-none" asChild>
-          <a
-            href="#contact"
-            onClick={(e) => {
-              e.preventDefault();
-              document
-                .getElementById("contact")
-                ?.scrollIntoView({ behavior: "smooth" });
-            }}
-          >
-            Contact Me
-          </a>
-        </Button>
+        <div className="mt-6 flex gap-4">
+          <Button className="h-10 w-40 rounded-none" asChild>
+            <Link to="/projects" viewTransition>
+              View Projects
+            </Link>
+          </Button>
+          <Button variant="outline" className="h-10 w-40 rounded-none" asChild>
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              Contact Me
+            </a>
+          </Button>
+        </div>
       </div>
+
+      <DotField className="hidden h-[min(36rem,70svh)] w-full [mask-image:radial-gradient(closest-side,black_55%,transparent)] xl:block" />
     </section>
   );
 }
