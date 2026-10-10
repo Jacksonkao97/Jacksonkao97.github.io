@@ -1,0 +1,21 @@
+# Monthly version updates, one grouped PR per ecosystem. Security updates
+# (enabled in the repo settings) still arrive as soon as an alert is raised.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      npm:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
