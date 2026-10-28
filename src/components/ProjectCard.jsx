@@ -19,7 +19,7 @@ export default function ProjectCard({ index, project }) {
         isInverted(index, true) ? "md:flex-row-reverse" : "md:flex-row"
       )}
     >
-      <div className="border-foreground aspect-square w-full border md:w-2/5 md:shrink-0">
+      <div className="border-foreground aspect-square w-full border md:w-1/3 md:shrink-0">
         <ProjectImage
           link={project.previewLink ?? project.siteLink}
           name={project.name}
