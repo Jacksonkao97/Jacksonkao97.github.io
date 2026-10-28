@@ -32,9 +32,11 @@ export default function Projects() {
         </div>
       ) : (
         <>
-          {visibleProjects.map((project, index) => (
-            <ProjectCard key={index} index={index + 1} project={project} />
-          ))}
+          <div className="flex flex-col gap-12 md:gap-16">
+            {visibleProjects.map((project, index) => (
+              <ProjectCard key={index} index={index + 1} project={project} />
+            ))}
+          </div>
 
           {hasMore && (
             <div className="mt-12 flex w-full justify-center">
