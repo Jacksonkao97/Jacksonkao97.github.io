@@ -19,14 +19,14 @@ export default function ProjectCard({ index, project }) {
         isInverted(index, true) ? "md:flex-row-reverse" : "md:flex-row"
       )}
     >
-      <div className="border-foreground aspect-square w-full border md:w-[40%]">
+      <div className="border-foreground aspect-square w-full border md:w-2/5 md:shrink-0">
         <ProjectImage
           link={project.previewLink ?? project.siteLink}
           name={project.name}
           className="border-muted-foreground/50 scale-95 border duration-200 group-hover:scale-100"
         />
       </div>
-      <div className="flex h-fit flex-row">
+      <div className="flex h-fit min-w-0 flex-1 flex-row">
         <Separator
           orientation="vertical"
           className="border-muted-foreground hidden md:mr-4 md:block"
