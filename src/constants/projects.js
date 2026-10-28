@@ -10,6 +10,16 @@ export const projects = [
     githubLink: "https://github.com/Jacksonkao97/media-log",
   },
   {
+    name: "Kathy Kao Interior Design",
+    description:
+      "A portfolio site for interior designer Kathy Kao. The home page shows her featured project as a turning clay 3D model, and she edits projects, photos and her About page herself through Pages CMS. Every page is a static export, built for SEO.",
+    technologies: ["Next.js", "TypeScript", "React Three Fiber", "Firebase"],
+    // Firebase Hosting's default URL until the site moves to its own domain.
+    siteLink: "https://kathykao-personal-website.web.app/",
+    githubLink:
+      "https://github.com/Jacksonkao97/Kathykao-Interior-Design-Website",
+  },
+  {
     name: "Endless Runner Game",
     description:
       "A simple endless runner game built with Phaser 4 and TypeScript. The game features a character that runs endlessly while avoiding obstacles and getting highest scores.",
