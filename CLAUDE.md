@@ -97,7 +97,7 @@ Every page loads lazily through `src/utils/lazyLoad.js`. That helper expects eac
 - It uses an installed Chrome via `channel: "chrome"`, or the binary in `CHROME_PATH`.
 - It embeds Hanken Grotesk from `@fontsource-variable/hanken-grotesk`, so the output doesn't depend on system fonts.
 - The PDF is gitignored and generated in CI. The navbar's "Download CV" serves `/docs/Resume.pdf`.
-- `personalInfo.title`, `phone` and `location` only appear in the PDF header.
+- `personalInfo.title`, `phone`, `location` and `website` only appear in the PDF header.
 - After editing `resume.js`, regenerate the PDF and check it still fits on one page.
 
 **Analytics.** Use `trackEvent(category, action, label)` from `@/lib/analytics` for outbound links and downloads. The existing calls use the categories `"Outbound"`, `"Resume"` and `"Project"` (`view_site`/`view_source`, labelled with the project name). react-ga4 capitalises the action, so GA4 shows event names like `View_site`.

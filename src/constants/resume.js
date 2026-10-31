@@ -6,6 +6,7 @@ export const personalInfo = {
   email: "jacksonkao97@gmail.com",
   phone: "+6011-6141-6637",
   location: "Kuala Lumpur, Malaysia",
+  website: "https://jacksonkao97.github.io",
   github: "https://github.com/jacksonkao97",
   linkedin: "https://www.linkedin.com/in/jackson-kao-654bab1b4",
 };
