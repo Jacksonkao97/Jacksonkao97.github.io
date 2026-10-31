@@ -52,23 +52,25 @@ export default function FeaturedWork() {
                   <MoveRight />
                 </a>
               </Button>
-              <Button
-                variant="link"
-                className="mt-4 w-max rounded-none"
-                asChild
-              >
-                <a
-                  href={projects[0].githubLink}
-                  onClick={() =>
-                    trackEvent("Project", "view_source", projects[0].name)
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
+              {projects[0].githubLink && (
+                <Button
+                  variant="link"
+                  className="mt-4 w-max rounded-none"
+                  asChild
                 >
-                  View Source Code
-                  <MoveRight />
-                </a>
-              </Button>
+                  <a
+                    href={projects[0].githubLink}
+                    onClick={() =>
+                      trackEvent("Project", "view_source", projects[0].name)
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Source Code
+                    <MoveRight />
+                  </a>
+                </Button>
+              )}
             </div>
           </div>
           <div className="flex w-full items-center justify-center border sm:w-[40%]">
