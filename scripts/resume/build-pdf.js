@@ -47,7 +47,8 @@ async function fontFace() {
 }
 
 function renderHtml(css) {
-  const { name, title, email, phone, location, linkedin } = personalInfo;
+  const { name, title, email, phone, location, website, linkedin } =
+    personalInfo;
   const e = escapeHtml;
 
   const jobs = experiences
@@ -108,7 +109,9 @@ function renderHtml(css) {
       <p class="title">${e(title)}</p>
       <p class="contact">
         <a href="mailto:${e(email)}">${e(email)}</a> | ${e(phone)} |
-        ${e(location)} | <a href="${e(linkedin)}">LinkedIn</a>
+        ${e(location)} |
+        <a href="${e(website)}">${e(website.replace(/^https:\/\//, ""))}</a> |
+        <a href="${e(linkedin)}">LinkedIn</a>
       </p>
     </header>
 
