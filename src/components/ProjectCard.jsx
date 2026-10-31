@@ -65,19 +65,25 @@ export default function ProjectCard({ index, project }) {
                 <MoveRight />
               </a>
             </Button>
-            <Button variant="link" className="mt-4 w-max rounded-none" asChild>
-              <a
-                href={project.githubLink}
-                onClick={() =>
-                  trackEvent("Project", "view_source", project.name)
-                }
-                target="_blank"
-                rel="noopener noreferrer"
+            {project.githubLink && (
+              <Button
+                variant="link"
+                className="mt-4 w-max rounded-none"
+                asChild
               >
-                View Source Code
-                <MoveRight />
-              </a>
-            </Button>
+                <a
+                  href={project.githubLink}
+                  onClick={() =>
+                    trackEvent("Project", "view_source", project.name)
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Source Code
+                  <MoveRight />
+                </a>
+              </Button>
+            )}
           </div>
         </div>
       </div>

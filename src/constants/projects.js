@@ -10,6 +10,16 @@ export const projects = [
       "https://github.com/Jacksonkao97/Kathykao-Interior-Design-Website",
   },
   {
+    name: "C&K Trading",
+    description:
+      "A bilingual English and Chinese website for C & K Trading Enterprise, a building materials supplier and contractor in Sabah. Visitors browse products and services and enquire through WhatsApp, and office staff edit the catalogue and photos themselves in an admin panel backed by PostgreSQL.",
+    technologies: ["Next.js", "TypeScript", "PostgreSQL", "Firebase"],
+    // Firebase App Hosting's default URL until the site moves to its own domain.
+    siteLink:
+      "https://ck-website--c-k-trading-website.asia-southeast1.hosted.app/",
+    // No githubLink: the repo is private, so the card hides "View Source Code".
+  },
+  {
     name: "MediaLog",
     description:
       "A personal anime, manga and movie tracker with a Chinese UI. It installs as an app and works offline, syncs each user's list to their own Google Drive with a three-way merge, and shows airing schedules and trending titles from AniList.",
